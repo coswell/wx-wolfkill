@@ -12,7 +12,7 @@ page {
   flex-direction: column;
   align-items: center;
   background: #2f3e75;
-  height: 36%;
+  height: 28%;
   justify-content: center;
 }
 
@@ -80,4 +80,15 @@ page {
 .index-bottom-item text {
   font-size: 30rpx;
   color: #666;
+}
+
+/* 首页创建/加入房间按钮样式 */
+.button-content{
+  flex-direction: column;
+  width: 100%;
+ 
+}
+button{
+  font-size: 14pt;
+  margin: 10pt;
 }

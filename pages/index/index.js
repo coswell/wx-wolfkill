@@ -14,5 +14,17 @@ Page({
       icon: 'success',
       duration: 1500
     })
-  }
+  },
+  //创建一局游戏
+  createRoom: function() {
+    wx.navigateTo({
+      url: '../createroom/createroom'
+    })
+  },
+  //加入一局游戏
+  joinRoom:function() {
+    wx.navigateTo({
+      url: '../joinroom/joinroom',
+    })
+  },
 })

@@ -1,0 +1,88 @@
+/**index.wxss**/
+.user-container {
+  width: 100%;
+  min-height: 72rpx;
+  padding: 10rpx;
+  /* display: block; */
+  /* border-bottom: #aaa 1px dashed; */
+  z-index: -1;
+}
+.flex-wrp{
+  display: inline-flex;
+}
+.number {
+  width: 45rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  margin-top: 10rpx;
+  border-radius: 50%;
+  background-color: #aaa;
+  color: #fff;
+  text-align: center;
+}
+.user-msg {
+  width: 100%;
+}
+.role {
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 10rpx;
+  border-radius: 50%;
+  background-color: rgb(33, 190, 59);
+  color: #fff;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.events-container {
+  min-height: 80rpx;
+}
+.label{
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #fff;
+  background-color:  rgb(14, 216, 182);
+  text-align: center;
+  padding: 0rpx 15rpx;
+  margin-top: 5rpx;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+  font-size: 13px;
+}
+.not-choose {
+  background-color:  #aaa;
+}
+.info-btn{
+  position: fixed;
+  z-index: 100;
+  right: 10rpx;
+  bottom: 40rpx;
+}
+
+/* 遮罩层 */
+
+.modal{
+  position: fixed;
+  z-index: 10;
+}
+.modal-container{
+  position: fixed;
+  left: 40rpx;
+  right: 40rpx;
+  top: 200rpx;
+  background-color: #fff;
+  min-height: 300rpx;
+}
+.btn-foot{
+  position: absolute;
+  bottom: 20rpx;
+  left: 0%;
+}
+.layer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(2, 2, 2, 0.678)
+}

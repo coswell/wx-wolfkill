@@ -1,16 +1,18 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/listman/listman",
     "pages/detailman/detailman",
     "pages/createroom/createroom",
-    "pages/room/room"
+    "pages/room/room",
+    "pages/god/god"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#2F3E75",
     "navigationBarTitleText": "狼人杀",
-    "navigationBarTextStyle":"#ffffff"
-  }
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json"
 }

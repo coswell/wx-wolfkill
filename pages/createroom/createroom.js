@@ -1,191 +1,185 @@
 //index.js
 //获取应用实例
-var app = getApp()
+const app = getApp()
+
 Page({
   data: {
-    dataList:[
-      //村民
-      {
-          "id":"1",
-          "pic": "./images/cunmin.png",
-          "title": "cunmin",
-          "currentNum":0,
-          "addclass":"itemroom-add",
-          "reduceclass":"itemroom-reduce itemroom-no",
-          "max":6,
-          "name": "村民",
-          "intro": "全场最懵的角色"
-      },
-      //女巫
-      {
-          "id":"2",
-          "pic": "./images/nvwu.png",
-          "title": "nvwu",
-          "currentNum":0,
-          "addclass":"itemroom-add",
-          "reduceclass":"itemroom-reduce itemroom-no",
-          "max":1,
-          "name": "女巫",
-          "intro": "可乐的代言人"
-      },
-      //猎人
-      {
-          "id":"3",
-          "pic": "./images/lieren.png",
-          "title": "lieren",
-          "currentNum":0,
-          "addclass":"itemroom-add",
-          "reduceclass":"itemroom-reduce itemroom-no",
-          "max":1,
-          "name": "猎人",
-          "intro": "全场最叼的角色"
-      },
-      //预言家
-      {
-          "id":"4",
-          "pic": "./images/yuyanjia.png",
-          "title": "yuyanjia",
-          "currentNum":0,
-          "addclass":"itemroom-add",
-          "reduceclass":"itemroom-reduce itemroom-no",
-          "max":1,
-          "name": "预言家",
-          "intro": "全场最惨的角色"
-      },
-      //盗贼
-      {
-          "id":"5",
-          "pic": "./images/daozei.png",
-          "title": "daozei",
-          "currentNum":0,
-          "addclass":"itemroom-add",
-          "reduceclass":"itemroom-reduce itemroom-no",
-          "max":1,
-          "name": "盗贼",
-          "intro": "全场最gay的角色"
-      },
-      //丘比特
-      {
-          "id":"6",
-          "pic": "./images/qiubite.png",
-          "title": "qiubite",
-          "currentNum":0,
-          "addclass":"itemroom-add",
-          "reduceclass":"itemroom-reduce itemroom-no",
-          "max":1,
-          "name": "丘比特",
-          "intro": "全场最色情的角色"
-      },
-      //测试
-      {
-          "id":"7",
-          "pic": "./images/qiubite.png",
-          "title": "qiubite",
-          "currentNum":0,
-          "addclass":"itemroom-add",
-          "reduceclass":"itemroom-reduce itemroom-no",
-          "max":2,
-          "name": "测试甲",
-          "intro": "全场最色情的角色"
-      },
-      //测试
-      {
-          "id":"8",
-          "pic": "./images/qiubite.png",
-          "title": "qiubite",
-          "currentNum":0,
-          "addclass":"itemroom-add",
-          "reduceclass":"itemroom-reduce itemroom-no",
-          "max":4,
-          "name": "测试乙",
-          "intro": "全场最色情的角色"
-      },
-      //测试
-      {
-          "id":"9",
-          "pic": "./images/qiubite.png",
-          "title": "qiubite",
-          "currentNum":0,
-          "addclass":"itemroom-add",
-          "reduceclass":"itemroom-reduce itemroom-no",
-          "max":3,
-          "name": "测试丙",
-          "intro": "全场最色情的角色"
-      },
-      
-    ],
-    total:0
+    game: wx.getStorageSync('game') || {
+      status: 'open',
+      gods: {g_yyj: true, g_nw: true, g_lr: true, g_sw: false, g_qs: false},
+      wolves: {w_blw: false, w_lw: false ,w_lr: 4},
+      villagers: {v_cm: 4},
+      configs: {
+        jy: {
+          selected: 0,
+          options: ['不可自救', '首夜可自救']
+        }, 
+        dy: {
+          selected: 0,
+          options: ['不可与解药同一夜使用', '可与解药同一夜使用']
+        }, 
+        sw: {
+          selected: 0,
+          options: ['同时被守被救算死亡', '同时被守被救算存活']
+        }}
+    },
   },
-  addnum: function(e){
-    let currId = e.currentTarget.dataset.id;
-    let max = e.currentTarget.dataset.max;
-    let array = this.data.dataList;
-    let totalNum = this.data.total;
-    for(let i = 0;i<array.length;i++){
-      if(array[i]['id']==currId){
-        if(array[i]['currentNum'] >= (max-1)){
-            array[i]['addclass'] = "itemroom-add itemroom-no";
-            if(array[i]['currentNum'] == (max-1)){
-                console.log(1);
-                totalNum += 1;
-            }
-            array[i]['currentNum'] = max;
-        }else{
-            array[i]['addclass'] = "itemroom-add";
-            array[i]['currentNum'] += 1;
-            totalNum += 1;
-        }
-        array[i]['reduceclass'] = "itemroom-reduce";
-        this.setData({
-          dataList:array,
-          total:totalNum
-        });
-        break;
-      }
+  //事件处理函数
+  gYYJPressed: function () {
+    var updateKey = 'game.gods.g_yyj'
+    this.setData({
+      [updateKey]: !this.data.game.gods.g_yyj
+    })
+  },
+  gNWPressed: function () {
+    var updateKey = 'game.gods.g_nw'
+    this.setData({
+      [updateKey]: !this.data.game.gods.g_nw
+    })
+  },
+  gLRPressed: function () {
+    var updateKey = 'game.gods.g_lr'
+    this.setData({
+      [updateKey]: !this.data.game.gods.g_lr
+    })
+  },
+  gSWPressed: function () {
+    var updateKey = 'game.gods.g_sw'
+    this.setData({
+      [updateKey]: !this.data.game.gods.g_sw
+    })
+  },
+  gQSPressed: function () {
+    var updateKey = 'game.gods.g_qs'
+    this.setData({
+      [updateKey]: !this.data.game.gods.g_qs
+    })
+  },
+  wBLWPressed: function () {
+    var updateKey = 'game.wolves.w_blw'
+    this.setData({
+      [updateKey]: !this.data.game.wolves.w_blw
+    })
+  },
+  wLWPressed: function () {
+    var updateKey = 'game.wolves.w_lw'
+    this.setData({
+      [updateKey]: !this.data.game.wolves.w_lw
+    })
+  },
+  lrSubPressed: function () {
+    var num = this.data.game.wolves.w_lr
+    if (num > 0) {
+      num--
     }
+    var udpateKey = 'game.wolves.w_lr'
+    this.setData({
+      [udpateKey]: num
+    })
   },
-  reducenum: function(e){
-    let currId = e.currentTarget.dataset.id;
-    let array = this.data.dataList;
-    let totalNum = this.data.total;
-    for(let i = 0;i<array.length;i++){
-      if(array[i]['id']==currId){
-        
-        if(array[i]['currentNum'] <= 1){
-            array[i]['reduceclass'] = "itemroom-reduce itemroom-no";
-            if(array[i]['currentNum'] == 1){
-                totalNum -= 1;
-            }
-            array[i]['currentNum'] = 0;
-        }else{
-            array[i]['reduceclass'] = "itemroom-reduce";
-            array[i]['currentNum'] -= 1;
-            totalNum -= 1;
-        }
-        array[i]['addclass'] = "itemroom-add";
-        this.setData({
-          dataList:array,
-          total:totalNum
-        });
-        break;
+  lrAddPressed: function () {
+    var num = this.data.game.wolves.w_lr
+    num++
+    var updateKey = 'game.wolves.w_lr'
+    this.setData({
+      [updateKey]: num
+    })
+  },
+  cmSubPressed: function () {
+    var num = this.data.game.villagers.v_cm
+    if (num > 0) {
+      num--
+    }
+    var udpateKey = 'game.villagers.v_cm'
+    this.setData({
+      [udpateKey]: num
+    })
+  },
+  cmAddPressed: function () {
+    var num = this.data.game.villagers.v_cm
+    num++
+    var updateKey = 'game.villagers.v_cm'
+    this.setData({
+      [updateKey]: num
+    })
+  },
+  configJYPressed: function () {
+    this.configUpdate('jy')
+  },
+  configDYPressed: function () {
+    this.configUpdate('dy')
+  },
+  configSWPressed: function () {
+    this.configUpdate('sw')
+  },
+  configUpdate: function (config) {
+    var that = this
+    var itemList = []
+    var updateKey = ''
+    if (config == 'jy') {
+      itemList = that.data.game.configs.jy.options
+      updateKey = 'game.configs.jy.selected'
+    } else if (config == 'dy') {
+      itemList = that.data.game.configs.dy.options
+      updateKey = 'game.configs.dy.selected'
+    } else if (config == 'sw') {
+      itemList = that.data.game.configs.sw.options
+      updateKey = 'game.configs.sw.selected'
+    }
+    wx.showActionSheet({
+      itemList: itemList,
+      success (res) {
+        that.setData({
+          [updateKey]: res.tapIndex
+        })
       }
+    })
+  },
+  startGame: function () {
+    // gods: {g_yyj: true, g_nw: false, g_lr: false, g_sw: false, g_qs: false},
+    //   wolves: {w_blw: false, w_lr: 0},
+    //   villagers: {v_cm: 0},
+    var totalUserCount = this.data.game.gods.g_yyj + 
+                         this.data.game.gods.g_nw + 
+                         this.data.game.gods.g_lr + 
+                         this.data.game.gods.g_sw + 
+                         this.data.game.gods.g_qs + 
+                         this.data.game.wolves.w_blw + 
+                         this.data.game.wolves.w_lr + 
+                         this.data.game.villagers.v_cm
+    if (totalUserCount < 6) {
+      wx.showToast({
+        title: '当前人数少于六人，不能开始游戏',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      const that = this
+      wx.showModal({
+        title: '确认开始游戏',
+        content: `当前游戏总人数为 ${totalUserCount + 1} 人，包含 ${totalUserCount} 名玩家和 1 名法官`,
+        success(res) {
+          if (res.confirm) {
+            that.data.game.status = 'checking'
+            wx.setStorageSync('game', that.data.game)
+            wx.redirectTo({
+              url: '/pages/check/check',
+            })
+          }
+        }
+      })
     }
   },
   onLoad: function () {
-    
-  },
-  goToPlay: function(){
-      wx.navigateTo({
-      url: '/pages/room/room',
-      success: function(res){
-        
-      },
-      fail: function() {
-        
-      },
-      complete: function() {
-        
-      }
-    })
+    const game = wx.getStorageSync('game') || {}
+    if (game.status == 'gaming') {
+      wx.redirectTo({
+        url: '/pages/game/game',
+      })
+    } else if (game.status == 'checking') {
+      wx.redirectTo({
+        url: '/pages/check/check',
+      })
+    } 
   }
 })

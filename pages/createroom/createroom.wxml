@@ -1,34 +1,63 @@
-<template name="itemroom">
-  <view class="itemroom-item">
-    <view class="itemroom-pic">
-      <image src="{{pic}}"></image>
-    </view>
-    <view class="itemroom-text">
-      <text class="name">{{name}}</text>
-    </view>
-    <view class="itemroom-operate">
-      <view class="{{reduceclass}}" bindtap="reducenum" data-id="{{id}}">-</view>
-      <view class="itemroom-num">{{currentNum}}</view>
-      <view class="{{addclass}}" bindtap="addnum" data-max="{{max}}" data-id="{{id}}">+</view>
+<!--index.wxml-->
+<view>
+  <view class="section-title">神民配置</view>
+  <view class="section-items">
+    <view bindtap="gYYJPressed" class="section-item {{game.gods.g_yyj ? 'selected' : ''}}">预言家</view>
+    <view bindtap="gNWPressed" class="section-item {{game.gods.g_nw ? 'selected' : ''}}">女巫</view>
+    <view bindtap="gLRPressed" class="section-item {{game.gods.g_lr ? 'selected' : ''}}">猎人</view>
+    <view bindtap="gSWPressed" class="section-item {{game.gods.g_sw ? 'selected' : ''}}">守卫</view>
+    <view bindtap="gQSPressed" class="section-item {{game.gods.g_qs ? 'selected' : ''}}">骑士</view>
+  </view>
+  <view class="section-title">狼人配置</view>
+  <view class="section-items">
+    <view bindtap="wBLWPressed" class="section-item {{game.wolves.w_blw ? 'selected' : ''}}">白狼王</view>
+    <view bindtap="wLWPressed" class="section-item {{game.wolves.w_lw ? 'selected' : ''}}">狼王</view>
+  </view>
+  <view class="divline"></view>
+  <view class="stepper-container">
+    <text class="stepper-label">普通狼人数量</text>
+    <view class="stepper">
+      <text class="{{game.wolves.w_lr > 0 ? 'normal' : 'disable'}}" bindtap="lrSubPressed">-</text>
+      <view class="stepper-value">{{game.wolves.w_lr}}</view>
+      <text class="normal" bindtap="lrAddPressed">+</text>
     </view>
   </view>
-</template>
-<view class="itemroom-container">
-  <block wx:for="{{dataList}}" wx:key="item">
-    <template is="itemroom" data="{{...item}}"></template>
-  </block>
+  <view class="section-title">村民配置</view>
+  <view class="stepper-container">
+    <text class="stepper-label">村民数量</text>
+    <view class="stepper">
+      <text class="{{game.villagers.v_cm > 0 ? 'normal' : 'disable'}}" bindtap="cmSubPressed">-</text>
+      <view class="stepper-value">{{game.villagers.v_cm}}</view>
+      <text class="normal" bindtap="cmAddPressed">+</text>
+    </view>
+  </view>
+  <view class="section-title">技能配置</view>
+  <view class="config">
+    <text class="config-name">解药</text>
+    <text class="config-desc">{{game.configs.jy.options[game.configs.jy.selected]}}</text>
+    <image bindtap="configJYPressed" class="config-choose" src="/images/right.png"></image>
+  </view>
+  <view class="divline"></view>
+  <view class="config">
+    <text class="config-name">毒药</text>
+    <text class="config-desc">{{game.configs.dy.options[game.configs.dy.selected]}}</text>
+    <image bindtap="configDYPressed" class="config-choose" src="/images/right.png"></image>
+  </view>
+  <view class="divline"></view>
+  <view class="config">
+    <text class="config-name">守卫</text>
+    <text class="config-desc">{{game.configs.sw.options[game.configs.sw.selected]}}</text>
+    <image bindtap="configSWPressed" class="config-choose" src="/images/right.png"></image>
+  </view>
+  <button bindtap="startGame" type="primary">开始游戏 ( {{m1.getUserCount(game)}} 人局 )</button>
 </view>
-<view class="itemroom-bottom">
-  <view class="itemroom-setting">
-  <block wx:for="{{dataList}}" wx:key="item">
-    <text wx:if="{{item.currentNum != 0}}">{{item.name}}{{item.currentNum}}人<text class="douhao">，</text></text>
-  </block>
-  </view>
-  <view class="itemroom-total">
-    <text>当前人数为{{total}}人</text>
-    <text wx:if="{{total == 12}}">(标准局)</text>
-  </view>
-  <view class="itemroom-btn" bindtap="goToPlay">
-    创建房间
-  </view>
-</view>
+
+<wxs module="m1">
+  var getUserCount = function(game) {
+    var gods = game.gods.g_yyj + game.gods.g_nw + game.gods.g_lr + game.gods.g_sw + game.gods.g_qs;
+    var wolves = game.wolves.w_blw + game.wolves.w_lr;
+    var villagers = game.villagers.v_cm;
+    return gods + wolves + villagers;
+  }
+  module.exports.getUserCount = getUserCount;
+</wxs>

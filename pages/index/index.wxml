@@ -4,8 +4,10 @@
   <image src="./images/logo.png"></image>
   <text>狼人杀盒子</text>
 </view>
-<view class="index-btn-wrap">
-  <navigator class="index-btn" url="../createroom/createroom" open-type="navigate" hover-class="index-button-hover">开始面杀</navigator>
+
+<view class="button-content">
+    <button type="primary" size="default" bindtap="createRoom">创建房间</button>
+    <button bindtap="joinRoom">加入房间</button>
 </view>
 <view class="index-bottom">
   <view class="index-bottom-item" bindtap="comingsoon">

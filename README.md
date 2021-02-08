@@ -1,9 +1,5 @@
 # wx-wolfkill
 
-微信小程序-狼人杀
-
-----
-
-先放一张图片
-
-![demo 图片](http://image.zanyuyu.com/wx-wolfkill-demo.jpg)
+https://github.com/zanseven007/wx-wolfkill
+https://github.com/LazyNeo/wolf-note
+https://github.com/tianye0718/wx-wolfkill
