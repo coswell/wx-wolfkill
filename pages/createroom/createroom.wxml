@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <view>
   <view class="section-title">神民配置</view>
+  <block wx:if="{{oswidth<400}}">
   <view class="section-items">
     <view bindtap="gYYJPressed" class="section-item {{game.gods.g_yyj ? 'selected' : ''}}">预言家</view>
     <view bindtap="gNWPressed" class="section-item {{game.gods.g_nw ? 'selected' : ''}}">女巫</view>
@@ -8,6 +9,24 @@
     <view bindtap="gSWPressed" class="section-item {{game.gods.g_sw ? 'selected' : ''}}">守卫</view>
     <view bindtap="gQSPressed" class="section-item {{game.gods.g_qs ? 'selected' : ''}}">骑士</view>
   </view>
+  <view class="section-items">
+    <view bindtap="gBCPressed" class="section-item {{game.gods.g_bc ? 'selected' : ''}}">白痴</view>
+    <view bindtap="gBCPressed" class="section-item {{game.gods.g_bc ? 'selected' : ''}}">白痴</view>
+  </view>
+  </block>
+  <block wx:else>
+  <view class="section-items">
+    <view bindtap="gYYJPressed" class="section-item {{game.gods.g_yyj ? 'selected' : ''}}">预言家</view>
+    <view bindtap="gNWPressed" class="section-item {{game.gods.g_nw ? 'selected' : ''}}">女巫</view>
+    <view bindtap="gLRPressed" class="section-item {{game.gods.g_lr ? 'selected' : ''}}">猎人</view>
+    <view bindtap="gSWPressed" class="section-item {{game.gods.g_sw ? 'selected' : ''}}">守卫</view>
+    <view bindtap="gQSPressed" class="section-item {{game.gods.g_qs ? 'selected' : ''}}">骑士</view>
+    <view bindtap="gBCPressed" class="section-item {{game.gods.g_bc ? 'selected' : ''}}">白痴</view>
+  </view>
+  <view class="section-items">
+    <view bindtap="gBCPressed" class="section-item {{game.gods.g_bc ? 'selected' : ''}}">白痴</view>
+  </view>
+  </block>
   <view class="section-title">狼人配置</view>
   <view class="section-items">
     <view bindtap="wBLWPressed" class="section-item {{game.wolves.w_blw ? 'selected' : ''}}">白狼王</view>
@@ -55,7 +74,7 @@
 <wxs module="m1">
   var getUserCount = function(game) {
     var gods = game.gods.g_yyj + game.gods.g_nw + game.gods.g_lr + game.gods.g_sw + game.gods.g_qs;
-    var wolves = game.wolves.w_blw + game.wolves.w_lr;
+    var wolves = game.wolves.w_blw + game.wolves.w_lw + game.wolves.w_lr;
     var villagers = game.villagers.v_cm;
     return gods + wolves + villagers;
   }

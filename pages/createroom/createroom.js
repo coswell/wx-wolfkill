@@ -6,7 +6,7 @@ Page({
   data: {
     game: wx.getStorageSync('game') || {
       status: 'open',
-      gods: {g_yyj: true, g_nw: true, g_lr: true, g_sw: false, g_qs: false},
+      gods: {g_yyj: true, g_nw: true, g_lr: true, g_sw: false, g_qs: false, g_bc: false},
       wolves: {w_blw: false, w_lw: false ,w_lr: 4},
       villagers: {v_cm: 4},
       configs: {
@@ -181,5 +181,9 @@ Page({
         url: '/pages/check/check',
       })
     } 
+    this.setData({
+      osheight: wx.getSystemInfoSync().windowHeight,
+      oswidth: wx.getSystemInfoSync().windowWidth
+    })
   }
 })

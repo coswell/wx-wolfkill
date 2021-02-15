@@ -13,9 +13,27 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/god/god",
-          "pathName": "pages/god/god",
+          "name": "登录demo",
+          "pathName": "pages/test/test",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "排行榜",
+          "pathName": "pages/rankinglist/rankinglist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "首页",
+          "pathName": "pages/index/index",
+          "query": "user=wangyuefeng",
+          "scene": null
+        },
+        {
+          "name": "创建房间",
+          "pathName": "pages/createroom/createroom",
+          "query": "user=wangyuefeng",
           "scene": null
         }
       ]

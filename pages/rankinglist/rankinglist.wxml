@@ -1,0 +1,22 @@
+<view class="table">
+    <view class="tr bg-w">
+        <view class="th">排名</view>
+        <view class="th">玩家</view>
+        <view class="th">排位积分</view>
+        <view class="th">消费积分</view>
+    </view>
+    <block wx:for="{{ranklist}}" wx:key="id">
+        <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+            <view class="td">{{item.id}}</view>
+            <view class="td">{{item.player}}</view>
+            <view class="td">{{item.rank}}</view>
+            <view class="td">{{item.consumer}}</view>
+        </view>
+        <view class="tr" wx:else>
+            <view class="td">{{item.id}}</view>
+            <view class="td">{{item.player}}</view>
+            <view class="td">{{item.rank}}</view>
+            <view class="td">{{item.consumer}}</view>
+        </view>
+    </block>
+</view>

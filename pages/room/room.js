@@ -1,5 +1,5 @@
 // pages/room/room.js
-var app = getApp();
+const app = getApp();
 Page({
   data: {
     userInfo: null,

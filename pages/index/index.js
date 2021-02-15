@@ -1,13 +1,17 @@
 //index.js
 //获取应用实例
-var app = getApp()
+const app = getApp()
 Page({
   data: {
 
   },
-  onLoad: function () {
-
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+  
   },
+  
   comingsoon: function () {
     wx.showToast({
       title: '敬请期待',
