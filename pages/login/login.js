@@ -23,13 +23,9 @@ Page({
   onLoad: function (options) {
     if (options.msg == "fail"){
       wx.showToast({
-
         title: '该账号不存在，请联系管理员添加',
-   
         icon: 'none',
-   
         duration: 3000//持续的时间
-   
       })
     }
   },

@@ -97,18 +97,15 @@ Page({
     })
   },
   startGame: function () {
-    // gods: {g_seer: true, g_witch: false, g_hunter: false, g_savior: false, g_knight: false},
-    //   wolves: {w_whiteking: false, w_werewolf: 0},
-    //   villagers: {v_villager: 0},
     const that = this
-    const totalUserCount = this.data.game.gods.g_seer + 
-                         this.data.game.gods.g_witch + 
-                         this.data.game.gods.g_hunter + 
-                         this.data.game.gods.g_savior + 
-                         this.data.game.gods.g_knight + 
-                         this.data.game.wolves.w_whiteking + 
-                         this.data.game.wolves.w_werewolf + 
-                         this.data.game.villagers.v_villager
+    const totalUserCount = that.data.game.gods.g_seer + 
+                         that.data.game.gods.g_witch + 
+                         that.data.game.gods.g_hunter + 
+                         that.data.game.gods.g_savior + 
+                         that.data.game.gods.g_knight + 
+                         that.data.game.wolves.w_whiteking + 
+                         that.data.game.wolves.w_werewolf + 
+                         that.data.game.villagers.v_villager
     if (totalUserCount < 6) {
       wx.showToast({
         title: '当前人数少于六人，不能开始游戏',
@@ -118,7 +115,7 @@ Page({
     } else {
       wx.showModal({
         title: '确认开始游戏',
-        content: `当前游戏总人数为 ${totalUserCount + 1} 人，包含 ${totalUserCount} 名玩家和 1 名法官`,
+        content: `当前游戏总人数为 ${totalUserCount} 人，包含 ${totalUserCount} 名玩家和 1 名法官`,
         success(res) {
           if (res.confirm) {
             that.data.game.status = 'checking'
