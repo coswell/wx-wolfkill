@@ -6,125 +6,86 @@ Page({
   data: {
     game: wx.getStorageSync('game') || {
       status: 'open',
-      gods: {g_yyj: true, g_nw: true, g_lr: true, g_sw: false, g_qs: false, g_bc: false},
-      wolves: {w_blw: false, w_lw: false ,w_lr: 4},
-      villagers: {v_cm: 4},
+      gods: {g_seer: true, g_witch: true, g_hunter: true, g_savior: false, g_knight: false, g_idiot: false},
+      wolves: {w_whiteking: false, w_blackking: false ,w_werewolf: 4},
+      villagers: {v_villager: 4},
+      third:{t_thief: false, t_bomberman: false},
       configs: {
-        jy: {
+        witch_save: {
           selected: 0,
-          options: ['不可自救', '首夜可自救']
+          options: ['不可自救', '首夜可自救', '全程可自救']
         }, 
-        dy: {
+        doublepills: {
           selected: 0,
-          options: ['不可与解药同一夜使用', '可与解药同一夜使用']
+          options: ['每晚仅可使用一瓶药', '每晚可使用两瓶药']
         }, 
-        sw: {
+        keepandsave: {
           selected: 0,
-          options: ['同时被守被救算死亡', '同时被守被救算存活']
+          options: ['同守同救算死亡', '同守同救算存活']
         }}
     },
   },
   //事件处理函数
-  gYYJPressed: function () {
-    var updateKey = 'game.gods.g_yyj'
-    this.setData({
-      [updateKey]: !this.data.game.gods.g_yyj
+  //将形如gods.g_seer的字符串分割为[gods][g_seer]
+  SplitDemo: function (str){
+    let ss;
+    // 在每个空格字符处进行分解。
+    ss = str.split(".");
+    return ss;
+  },
+  //布尔类型按钮处理
+  boolPressed: function (event) {
+    const that = this
+    const group = that.SplitDemo(event.currentTarget.id)[0]
+    const role = that.SplitDemo(event.currentTarget.id)[1]
+    const updateKey = 'game.' + event.currentTarget.id
+    that.setData({
+      [updateKey]: !that.data.game[group][role]
     })
   },
-  gNWPressed: function () {
-    var updateKey = 'game.gods.g_nw'
-    this.setData({
-      [updateKey]: !this.data.game.gods.g_nw
-    })
-  },
-  gLRPressed: function () {
-    var updateKey = 'game.gods.g_lr'
-    this.setData({
-      [updateKey]: !this.data.game.gods.g_lr
-    })
-  },
-  gSWPressed: function () {
-    var updateKey = 'game.gods.g_sw'
-    this.setData({
-      [updateKey]: !this.data.game.gods.g_sw
-    })
-  },
-  gQSPressed: function () {
-    var updateKey = 'game.gods.g_qs'
-    this.setData({
-      [updateKey]: !this.data.game.gods.g_qs
-    })
-  },
-  wBLWPressed: function () {
-    var updateKey = 'game.wolves.w_blw'
-    this.setData({
-      [updateKey]: !this.data.game.wolves.w_blw
-    })
-  },
-  wLWPressed: function () {
-    var updateKey = 'game.wolves.w_lw'
-    this.setData({
-      [updateKey]: !this.data.game.wolves.w_lw
-    })
-  },
-  lrSubPressed: function () {
-    var num = this.data.game.wolves.w_lr
+  //加减类型按钮处理
+  subPressed: function (event) {
+    const that = this
+    const group = that.SplitDemo(event.currentTarget.id)[0]
+    const role = that.SplitDemo(event.currentTarget.id)[1]
+    // console.log(group,role)
+    let num = that.data.game[group][role]
+    // console.log(num)
     if (num > 0) {
       num--
+      const udpateKey = 'game.' + event.currentTarget.id
+      that.setData({
+        [udpateKey]: num
+      })
     }
-    var udpateKey = 'game.wolves.w_lr'
-    this.setData({
-      [udpateKey]: num
-    })
   },
-  lrAddPressed: function () {
-    var num = this.data.game.wolves.w_lr
+  addPressed: function (event) {
+    const that = this
+    const group = that.SplitDemo(event.currentTarget.id)[0]
+    const role = that.SplitDemo(event.currentTarget.id)[1]
+    // console.log(group,role)
+    let num = that.data.game[group][role]
+    // console.log(num)
     num++
-    var updateKey = 'game.wolves.w_lr'
-    this.setData({
+    const updateKey = 'game.' + event.currentTarget.id
+    that.setData({
       [updateKey]: num
     })
   },
-  cmSubPressed: function () {
-    var num = this.data.game.villagers.v_cm
-    if (num > 0) {
-      num--
-    }
-    var udpateKey = 'game.villagers.v_cm'
-    this.setData({
-      [udpateKey]: num
-    })
-  },
-  cmAddPressed: function () {
-    var num = this.data.game.villagers.v_cm
-    num++
-    var updateKey = 'game.villagers.v_cm'
-    this.setData({
-      [updateKey]: num
-    })
-  },
-  configJYPressed: function () {
-    this.configUpdate('jy')
-  },
-  configDYPressed: function () {
-    this.configUpdate('dy')
-  },
-  configSWPressed: function () {
-    this.configUpdate('sw')
-  },
-  configUpdate: function (config) {
-    var that = this
-    var itemList = []
-    var updateKey = ''
-    if (config == 'jy') {
-      itemList = that.data.game.configs.jy.options
-      updateKey = 'game.configs.jy.selected'
-    } else if (config == 'dy') {
-      itemList = that.data.game.configs.dy.options
-      updateKey = 'game.configs.dy.selected'
-    } else if (config == 'sw') {
-      itemList = that.data.game.configs.sw.options
-      updateKey = 'game.configs.sw.selected'
+  configPressed: function (event) {
+    const that = this
+    const config = event.currentTarget.id
+    let itemList = []
+    let updateKey = ''
+    if (config == 'witch_save') {
+      itemList = that.data.game.configs.witch_save.options
+      updateKey = 'game.configs.witch_save.selected'
+    } else if (config == 'doublepills') {
+      itemList = that.data.game.configs.doublepills.options
+      updateKey = 'game.configs.doublepills.selected'
+    } else if (config == 'keepandsave') {
+      itemList = that.data.game.configs.keepandsave.options
+      updateKey = 'game.configs.keepandsave.selected'
     }
     wx.showActionSheet({
       itemList: itemList,
@@ -136,17 +97,18 @@ Page({
     })
   },
   startGame: function () {
-    // gods: {g_yyj: true, g_nw: false, g_lr: false, g_sw: false, g_qs: false},
-    //   wolves: {w_blw: false, w_lr: 0},
-    //   villagers: {v_cm: 0},
-    var totalUserCount = this.data.game.gods.g_yyj + 
-                         this.data.game.gods.g_nw + 
-                         this.data.game.gods.g_lr + 
-                         this.data.game.gods.g_sw + 
-                         this.data.game.gods.g_qs + 
-                         this.data.game.wolves.w_blw + 
-                         this.data.game.wolves.w_lr + 
-                         this.data.game.villagers.v_cm
+    // gods: {g_seer: true, g_witch: false, g_hunter: false, g_savior: false, g_knight: false},
+    //   wolves: {w_whiteking: false, w_werewolf: 0},
+    //   villagers: {v_villager: 0},
+    const that = this
+    const totalUserCount = this.data.game.gods.g_seer + 
+                         this.data.game.gods.g_witch + 
+                         this.data.game.gods.g_hunter + 
+                         this.data.game.gods.g_savior + 
+                         this.data.game.gods.g_knight + 
+                         this.data.game.wolves.w_whiteking + 
+                         this.data.game.wolves.w_werewolf + 
+                         this.data.game.villagers.v_villager
     if (totalUserCount < 6) {
       wx.showToast({
         title: '当前人数少于六人，不能开始游戏',
@@ -154,7 +116,6 @@ Page({
         duration: 2000
       })
     } else {
-      const that = this
       wx.showModal({
         title: '确认开始游戏',
         content: `当前游戏总人数为 ${totalUserCount + 1} 人，包含 ${totalUserCount} 名玩家和 1 名法官`,

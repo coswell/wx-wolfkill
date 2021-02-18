@@ -72,7 +72,7 @@
   align-items: center;
 }
 .config-name {
-  width: 100rpx;
+  flex: 1;
 }
 .config-desc {
   flex: 1;

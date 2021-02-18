@@ -3,79 +3,79 @@
   <view class="section-title">神民配置</view>
   <block wx:if="{{oswidth<400}}">
   <view class="section-items">
-    <view bindtap="gYYJPressed" class="section-item {{game.gods.g_yyj ? 'selected' : ''}}">预言家</view>
-    <view bindtap="gNWPressed" class="section-item {{game.gods.g_nw ? 'selected' : ''}}">女巫</view>
-    <view bindtap="gLRPressed" class="section-item {{game.gods.g_lr ? 'selected' : ''}}">猎人</view>
-    <view bindtap="gSWPressed" class="section-item {{game.gods.g_sw ? 'selected' : ''}}">守卫</view>
-    <view bindtap="gQSPressed" class="section-item {{game.gods.g_qs ? 'selected' : ''}}">骑士</view>
+    <view bindtap="boolPressed" id="gods.g_seer" class="section-item {{game.gods.g_seer ? 'selected' : ''}}">预言家</view>
+    <view bindtap="boolPressed" id="gods.g_witch" class="section-item {{game.gods.g_witch ? 'selected' : ''}}">女巫</view>
+    <view bindtap="boolPressed" id="gods.g_hunter" class="section-item {{game.gods.g_hunter ? 'selected' : ''}}">猎人</view>
+    <view bindtap="boolPressed" id="gods.g_savior" class="section-item {{game.gods.g_savior ? 'selected' : ''}}">守卫</view>
+    <view bindtap="boolPressed" id="gods.g_knight" class="section-item {{game.gods.g_knight ? 'selected' : ''}}">骑士</view>
   </view>
   <view class="section-items">
-    <view bindtap="gBCPressed" class="section-item {{game.gods.g_bc ? 'selected' : ''}}">白痴</view>
-    <view bindtap="gBCPressed" class="section-item {{game.gods.g_bc ? 'selected' : ''}}">白痴</view>
+    <view bindtap="boolPressed" id="gods.g_idiot" class="section-item {{game.gods.g_idiot ? 'selected' : ''}}">白痴</view>
+    <view bindtap="boolPressed" id="gods.g_idiot" class="section-item {{game.gods.g_idiot ? 'selected' : ''}}">白痴</view>
   </view>
   </block>
   <block wx:else>
   <view class="section-items">
-    <view bindtap="gYYJPressed" class="section-item {{game.gods.g_yyj ? 'selected' : ''}}">预言家</view>
-    <view bindtap="gNWPressed" class="section-item {{game.gods.g_nw ? 'selected' : ''}}">女巫</view>
-    <view bindtap="gLRPressed" class="section-item {{game.gods.g_lr ? 'selected' : ''}}">猎人</view>
-    <view bindtap="gSWPressed" class="section-item {{game.gods.g_sw ? 'selected' : ''}}">守卫</view>
-    <view bindtap="gQSPressed" class="section-item {{game.gods.g_qs ? 'selected' : ''}}">骑士</view>
-    <view bindtap="gBCPressed" class="section-item {{game.gods.g_bc ? 'selected' : ''}}">白痴</view>
+    <view bindtap="boolPressed" id="gods.g_seer" class="section-item {{game.gods.g_seer ? 'selected' : ''}}">预言家</view>
+    <view bindtap="boolPressed" id="gods.g_witch" class="section-item {{game.gods.g_witch ? 'selected' : ''}}">女巫</view>
+    <view bindtap="boolPressed" id="gods.g_hunter" class="section-item {{game.gods.g_hunter ? 'selected' : ''}}">猎人</view>
+    <view bindtap="boolPressed" id="gods.g_savior" class="section-item {{game.gods.g_savior ? 'selected' : ''}}">守卫</view>
+    <view bindtap="boolPressed" id="gods.g_knight" class="section-item {{game.gods.g_knight ? 'selected' : ''}}">骑士</view>
+    <view bindtap="boolPressed" id="gods.g_idiot" class="section-item {{game.gods.g_idiot ? 'selected' : ''}}">白痴</view>
   </view>
   <view class="section-items">
-    <view bindtap="gBCPressed" class="section-item {{game.gods.g_bc ? 'selected' : ''}}">白痴</view>
+    <view bindtap="boolPressed" id="gods.g_idiot" class="section-item {{game.gods.g_idiot ? 'selected' : ''}}">白痴</view>
   </view>
   </block>
   <view class="section-title">狼人配置</view>
   <view class="section-items">
-    <view bindtap="wBLWPressed" class="section-item {{game.wolves.w_blw ? 'selected' : ''}}">白狼王</view>
-    <view bindtap="wLWPressed" class="section-item {{game.wolves.w_lw ? 'selected' : ''}}">狼王</view>
+    <view bindtap="boolPressed" id="wolves.w_whiteking" class="section-item {{game.wolves.w_whiteking ? 'selected' : ''}}">白狼王</view>
+    <view bindtap="boolPressed" id="wolves.w_blackking" class="section-item {{game.wolves.w_blackking ? 'selected' : ''}}">狼王</view>
   </view>
   <view class="divline"></view>
   <view class="stepper-container">
     <text class="stepper-label">普通狼人数量</text>
     <view class="stepper">
-      <text class="{{game.wolves.w_lr > 0 ? 'normal' : 'disable'}}" bindtap="lrSubPressed">-</text>
-      <view class="stepper-value">{{game.wolves.w_lr}}</view>
-      <text class="normal" bindtap="lrAddPressed">+</text>
+      <text id="wolves.w_werewolf" class="{{game.wolves.w_werewolf > 0 ? 'normal' : 'disable'}}" bindtap="subPressed">-</text>
+      <view class="stepper-value">{{game.wolves.w_werewolf}}</view>
+      <text id="wolves.w_werewolf" class="normal" bindtap="addPressed">+</text>
     </view>
   </view>
   <view class="section-title">村民配置</view>
   <view class="stepper-container">
     <text class="stepper-label">村民数量</text>
     <view class="stepper">
-      <text class="{{game.villagers.v_cm > 0 ? 'normal' : 'disable'}}" bindtap="cmSubPressed">-</text>
-      <view class="stepper-value">{{game.villagers.v_cm}}</view>
-      <text class="normal" bindtap="cmAddPressed">+</text>
+      <text id="villagers.v_villager" class="{{game.villagers.v_villager > 0 ? 'normal' : 'disable'}}" bindtap="subPressed">-</text>
+      <view class="stepper-value">{{game.villagers.v_villager}}</view>
+      <text id="villagers.v_villager" class="normal" bindtap="addPressed">+</text>
     </view>
   </view>
-  <view class="section-title">技能配置</view>
+  <view class="section-title">特殊规则</view>
   <view class="config">
-    <text class="config-name">解药</text>
-    <text class="config-desc">{{game.configs.jy.options[game.configs.jy.selected]}}</text>
-    <image bindtap="configJYPressed" class="config-choose" src="/images/right.png"></image>
+    <text class="config-name">女巫自救</text>
+    <text class="config-desc">{{game.configs.witch_save.options[game.configs.witch_save.selected]}}</text>
+    <image id="witch_save" bindtap="configPressed" class="config-choose" src="/images/right.png"></image>
   </view>
   <view class="divline"></view>
   <view class="config">
-    <text class="config-name">毒药</text>
-    <text class="config-desc">{{game.configs.dy.options[game.configs.dy.selected]}}</text>
-    <image bindtap="configDYPressed" class="config-choose" src="/images/right.png"></image>
+    <text class="config-name">双药限制</text>
+    <text class="config-desc">{{game.configs.doublepills.options[game.configs.doublepills.selected]}}</text>
+    <image id="doublepills" bindtap="configPressed" class="config-choose" src="/images/right.png"></image>
   </view>
   <view class="divline"></view>
   <view class="config">
-    <text class="config-name">守卫</text>
-    <text class="config-desc">{{game.configs.sw.options[game.configs.sw.selected]}}</text>
-    <image bindtap="configSWPressed" class="config-choose" src="/images/right.png"></image>
+    <text class="config-name">同守同救</text>
+    <text class="config-desc">{{game.configs.keepandsave.options[game.configs.keepandsave.selected]}}</text>
+    <image id="keepandsave" bindtap="configPressed" class="config-choose" src="/images/right.png"></image>
   </view>
   <button bindtap="startGame" type="primary">开始游戏 ( {{m1.getUserCount(game)}} 人局 )</button>
 </view>
 
 <wxs module="m1">
   var getUserCount = function(game) {
-    var gods = game.gods.g_yyj + game.gods.g_nw + game.gods.g_lr + game.gods.g_sw + game.gods.g_qs;
-    var wolves = game.wolves.w_blw + game.wolves.w_lw + game.wolves.w_lr;
-    var villagers = game.villagers.v_cm;
+    var gods = game.gods.g_seer + game.gods.g_witch + game.gods.g_hunter + game.gods.g_savior + game.gods.g_knight;
+    var wolves = game.wolves.w_whiteking + game.wolves.w_blackking + game.wolves.w_werewolf;
+    var villagers = game.villagers.v_villager;
     return gods + wolves + villagers;
   }
   module.exports.getUserCount = getUserCount;
