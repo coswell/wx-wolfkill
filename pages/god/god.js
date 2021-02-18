@@ -1,4 +1,4 @@
-//index.js
+//gos.js
 //获取应用实例
 const app = getApp()
 import {deepCopy} from '../../utils/util.js'

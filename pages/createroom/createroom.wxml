@@ -52,6 +52,12 @@
   </view>
   <view class="section-title">特殊规则</view>
   <view class="config">
+    <text class="config-name">警长竞选</text>
+    <text class="config-desc">{{game.configs.sheriff.options[game.configs.sheriff.selected]}}</text>
+    <image id="sheriff" bindtap="configPressed" class="config-choose" src="/images/symbol/right.png"></image>
+  </view>
+  <view class="divline"></view>
+  <view class="config">
     <text class="config-name">女巫自救</text>
     <text class="config-desc">{{game.configs.witch_save.options[game.configs.witch_save.selected]}}</text>
     <image id="witch_save" bindtap="configPressed" class="config-choose" src="/images/symbol/right.png"></image>

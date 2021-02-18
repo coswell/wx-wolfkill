@@ -1,17 +1,21 @@
-//index.js
+//createroom.js
 //获取应用实例
 const app = getApp()
 
 Page({
   data: {
-    game: wx.getStorageSync('game') || {
+    game: {
       status: 'open',
-      gods: {g_seer: true, g_witch: true, g_hunter: true, g_savior: false, g_idiot: false, 
-        g_knight: false, g_silence: false, total: 3},
+      gods: {g_seer: true, g_witch: true, g_hunter: true, g_savior: true, g_idiot: false, 
+        g_knight: false, g_silence: false, total: 4},
       wolves: {w_whiteking: false, w_blackking: false , w_werewolf: 4, total: 4},
       villagers: {v_villager: 4, total: 4},
       third:{t_thief: false, t_bomberman: false, total: 0},
       configs: {
+        sheriff: {
+          selected: 0,
+          options: ['有警长竞选环节', '没有警长竞选']
+        },
         witch_save: {
           selected: 0,
           options: ['不可自救', '首夜可自救', '全程可自救']
@@ -87,19 +91,10 @@ Page({
   },
   configPressed: function (event) {
     const that = this
+    console.log(that.data.game)
     const config = event.currentTarget.id
-    let itemList = []
-    let updateKey = ''
-    if (config == 'witch_save') {
-      itemList = that.data.game.configs.witch_save.options
-      updateKey = 'game.configs.witch_save.selected'
-    } else if (config == 'doublepills') {
-      itemList = that.data.game.configs.doublepills.options
-      updateKey = 'game.configs.doublepills.selected'
-    } else if (config == 'keepandsave') {
-      itemList = that.data.game.configs.keepandsave.options
-      updateKey = 'game.configs.keepandsave.selected'
-    }
+    let itemList = that.data.game.configs[config].options
+    let updateKey = 'game.configs.' + config + '.selected'
     wx.showActionSheet({
       itemList: itemList,
       success (res) {
@@ -128,10 +123,8 @@ Page({
         content: `当前游戏总人数为 ${totalUserCount} 人\r\n包含${godscount}神、${villagerscount}民、${wolvescount}狼和${thirdcount}名第三方`,
         success(res) {
           if (res.confirm) {
-            that.data.game.status = 'checking'
-            wx.setStorageSync('game', that.data.game)
             wx.redirectTo({
-              url: '/pages/check/check',
+              url: '/pages/god/god',
             })
           }
         }
@@ -139,16 +132,6 @@ Page({
     }
   },
   onLoad: function () {
-    const game = wx.getStorageSync('game') || {}
-    if (game.status == 'gaming') {
-      wx.redirectTo({
-        url: '/pages/game/game',
-      })
-    } else if (game.status == 'checking') {
-      wx.redirectTo({
-        url: '/pages/check/check',
-      })
-    } 
     this.setData({
       osheight: wx.getSystemInfoSync().windowHeight,
       oswidth: wx.getSystemInfoSync().windowWidth
