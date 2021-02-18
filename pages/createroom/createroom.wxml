@@ -54,19 +54,19 @@
   <view class="config">
     <text class="config-name">女巫自救</text>
     <text class="config-desc">{{game.configs.witch_save.options[game.configs.witch_save.selected]}}</text>
-    <image id="witch_save" bindtap="configPressed" class="config-choose" src="/images/right.png"></image>
+    <image id="witch_save" bindtap="configPressed" class="config-choose" src="/images/symbol/right.png"></image>
   </view>
   <view class="divline"></view>
   <view class="config">
     <text class="config-name">双药限制</text>
     <text class="config-desc">{{game.configs.doublepills.options[game.configs.doublepills.selected]}}</text>
-    <image id="doublepills" bindtap="configPressed" class="config-choose" src="/images/right.png"></image>
+    <image id="doublepills" bindtap="configPressed" class="config-choose" src="/images/symbol/right.png"></image>
   </view>
   <view class="divline"></view>
   <view class="config">
     <text class="config-name">同守同救</text>
     <text class="config-desc">{{game.configs.keepandsave.options[game.configs.keepandsave.selected]}}</text>
-    <image id="keepandsave" bindtap="configPressed" class="config-choose" src="/images/right.png"></image>
+    <image id="keepandsave" bindtap="configPressed" class="config-choose" src="/images/symbol/right.png"></image>
   </view>
   <button bindtap="startGame" type="primary">开始游戏 ( {{m1.getUserCount(game)}} 人局 )</button>
 </view>
