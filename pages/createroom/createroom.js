@@ -145,22 +145,15 @@ Page({
       })
     }
   },
-  onLoad: function () {
+  onLoad: function (options) {
     this.setData({
+      actuallyuser: options.user,
       osheight: wx.getSystemInfoSync().windowHeight,
       oswidth: wx.getSystemInfoSync().windowWidth
     })
   },
   onShow: function () {
-    // 获取当前小程序的页面栈
-    let pages = getCurrentPages();
-    // 数组中索引最大的页面--当前页面
-    let currentPage = pages[pages.length-1];
-    // 获取当前页面中的 options
-    let option = currentPage.options
-    this.setData({
-      actuallyuser: option.user,
-    })
+
   },
   comingsoon: function () {
     wx.showToast({

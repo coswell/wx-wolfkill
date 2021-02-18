@@ -9,7 +9,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      actuallyuser: options.user,
+    })
   },
   
   comingsoon: function () {
@@ -21,8 +23,9 @@ Page({
   },
   //创建一局游戏
   createRoom: function() {
+    const that = this
     wx.navigateTo({
-      url: '../createroom/createroom'
+      url: '../createroom/createroom?user=' + that.data.actuallyuser
     })
   },
   //加入一局游戏
