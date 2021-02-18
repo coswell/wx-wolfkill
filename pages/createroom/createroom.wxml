@@ -73,10 +73,11 @@
 
 <wxs module="m1">
   var getUserCount = function(game) {
-    var gods = game.gods.g_seer + game.gods.g_witch + game.gods.g_hunter + game.gods.g_savior + game.gods.g_knight;
-    var wolves = game.wolves.w_whiteking + game.wolves.w_blackking + game.wolves.w_werewolf;
-    var villagers = game.villagers.v_villager;
-    return gods + wolves + villagers;
+    var gods = game.gods.total;
+    var wolves = game.wolves.total;
+    var villagers = game.villagers.total;
+    var third = game.third.total;
+    return gods + wolves + villagers + third;
   }
   module.exports.getUserCount = getUserCount;
 </wxs>

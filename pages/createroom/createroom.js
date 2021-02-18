@@ -6,10 +6,11 @@ Page({
   data: {
     game: wx.getStorageSync('game') || {
       status: 'open',
-      gods: {g_seer: true, g_witch: true, g_hunter: true, g_savior: false, g_knight: false, g_idiot: false},
-      wolves: {w_whiteking: false, w_blackking: false ,w_werewolf: 4},
-      villagers: {v_villager: 4},
-      third:{t_thief: false, t_bomberman: false},
+      gods: {g_seer: true, g_witch: true, g_hunter: true, g_savior: false, g_idiot: false, 
+        g_knight: false, g_silence: false, total: 3},
+      wolves: {w_whiteking: false, w_blackking: false , w_werewolf: 4, total: 4},
+      villagers: {v_villager: 4, total: 4},
+      third:{t_thief: false, t_bomberman: false, total: 0},
       configs: {
         witch_save: {
           selected: 0,
@@ -38,9 +39,17 @@ Page({
     const that = this
     const group = that.SplitDemo(event.currentTarget.id)[0]
     const role = that.SplitDemo(event.currentTarget.id)[1]
-    const updateKey = 'game.' + event.currentTarget.id
+    const updateKey1 = 'game.' + event.currentTarget.id
+    const updateKey2 = 'game.' + group + '.total'
+    let add = 0
+    if (that.data.game[group][role]) {
+      add = -1
+    }else{
+      add = 1
+    }
     that.setData({
-      [updateKey]: !that.data.game[group][role]
+      [updateKey1]: !that.data.game[group][role],
+      [updateKey2]: that.data.game[group].total + add
     })
   },
   //加减类型按钮处理
@@ -53,9 +62,11 @@ Page({
     // console.log(num)
     if (num > 0) {
       num--
-      const udpateKey = 'game.' + event.currentTarget.id
+      const udpateKey1 = 'game.' + event.currentTarget.id
+      const updateKey2 = 'game.' + group + '.total'
       that.setData({
-        [udpateKey]: num
+        [udpateKey1]: num,
+        [updateKey2]: that.data.game[group].total - 1
       })
     }
   },
@@ -67,9 +78,11 @@ Page({
     let num = that.data.game[group][role]
     // console.log(num)
     num++
-    const updateKey = 'game.' + event.currentTarget.id
+    const updateKey1 = 'game.' + event.currentTarget.id
+    const updateKey2 = 'game.' + group + '.total'
     that.setData({
-      [updateKey]: num
+      [updateKey1]: num,
+      [updateKey2]: that.data.game[group].total + 1
     })
   },
   configPressed: function (event) {
@@ -98,14 +111,11 @@ Page({
   },
   startGame: function () {
     const that = this
-    const totalUserCount = that.data.game.gods.g_seer + 
-                         that.data.game.gods.g_witch + 
-                         that.data.game.gods.g_hunter + 
-                         that.data.game.gods.g_savior + 
-                         that.data.game.gods.g_knight + 
-                         that.data.game.wolves.w_whiteking + 
-                         that.data.game.wolves.w_werewolf + 
-                         that.data.game.villagers.v_villager
+    const godscount = that.data.game.gods.total
+    const villagerscount = that.data.game.villagers.total
+    const wolvescount = that.data.game.wolves.total
+    const thirdcount = that.data.game.third.total
+    const totalUserCount = godscount + villagerscount + wolvescount + thirdcount
     if (totalUserCount < 6) {
       wx.showToast({
         title: '当前人数少于六人，不能开始游戏',
@@ -115,7 +125,7 @@ Page({
     } else {
       wx.showModal({
         title: '确认开始游戏',
-        content: `当前游戏总人数为 ${totalUserCount} 人，包含 ${totalUserCount} 名玩家和 1 名法官`,
+        content: `当前游戏总人数为 ${totalUserCount} 人\r\n包含${godscount}神、${villagerscount}民、${wolvescount}狼和${thirdcount}名第三方`,
         success(res) {
           if (res.confirm) {
             that.data.game.status = 'checking'
