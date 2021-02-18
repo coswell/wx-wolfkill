@@ -122,7 +122,7 @@ Page({
         success(res) {
           if (res.confirm) {
             wx.redirectTo({
-              url: '/pages/god/god',
+              url: '/pages/room/room',
             })
           }
         }

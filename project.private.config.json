@@ -35,6 +35,12 @@
           "pathName": "pages/createroom/createroom",
           "query": "user=wangyuefeng",
           "scene": null
+        },
+        {
+          "name": "等待入座",
+          "pathName": "pages/waitroom/waitroom",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -46,7 +46,7 @@ Page({
   sharePage: function () {
     wx.showToast({
       title: '请点击右上角按钮进行分享',
-      icon: 'success',
+      icon: 'fail',
       mask: true,
       duration: 3000
     })

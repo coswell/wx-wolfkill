@@ -35,5 +35,6 @@ const deepCopy = (source) => {
 }
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  deepCopy: deepCopy
 }
