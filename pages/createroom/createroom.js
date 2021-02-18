@@ -121,9 +121,25 @@ Page({
         content: `当前游戏总人数为 ${totalUserCount} 人\r\n包含${godscount}神、${villagerscount}民、${wolvescount}狼和${thirdcount}名第三方`,
         success(res) {
           if (res.confirm) {
-            wx.redirectTo({
-              url: '/pages/room/room',
+            that.setData({
+              ["game.user"]: that.data.actuallyuser
             })
+            wx.request({
+              url: app.globalData.URL + 'createroom',
+              data: that.data.game,
+              header: {'content-type':'application/json'},
+              method: 'POST',
+              dataType: 'json',
+              responseType: 'text',
+              success: (result)=>{
+                let roomid = result.data.roomid
+                wx.redirectTo({
+                  url: '/pages/waitroom/waitroom?roomid=' + roomid,
+                })
+              },
+              fail: ()=>{},
+              complete: ()=>{}
+            });
           }
         }
       })
@@ -134,6 +150,18 @@ Page({
       osheight: wx.getSystemInfoSync().windowHeight,
       oswidth: wx.getSystemInfoSync().windowWidth
     })
+  },
+  onShow: function () {
+    // 获取当前小程序的页面栈
+    let pages = getCurrentPages();
+    // 数组中索引最大的页面--当前页面
+    let currentPage = pages[pages.length-1];
+    // 获取当前页面中的 options
+    let option = currentPage.options
+    this.setData({
+      actuallyuser: option.user,
+    })
+    console.log(this.data)
   },
   comingsoon: function () {
     wx.showToast({
