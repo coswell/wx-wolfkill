@@ -1,7 +1,7 @@
 
 <!--index.wxml-->
 <view class="index-top">
-  <image src="./images/logo.png"></image>
+  <image src="/images/symbol/wolflogo.png"></image>
   <text>EB狼人杀</text>
 </view>
 
@@ -11,19 +11,19 @@
 </view>
 <view class="index-bottom">
   <navigator class="index-bottom-item" url="../rankinglist/rankinglist" open-type="navigate" hover-class="index-bottom-item-hover">
-    <image src="./images/gameinfo.png"></image>
+    <image src="/images/symbol/books.png"></image>
     <text>积分排行</text>
   </navigator>
   <navigator class="index-bottom-item" url="../listman/listman" open-type="navigate" hover-class="index-bottom-item-hover">
-    <image src="./images/maninfo.png"></image>
+    <image src="/images/symbol/orangeboy.png"></image>
     <text>人物介绍</text>
   </navigator>
   <view class="index-bottom-item" bindtap="comingsoon">
-    <image src="./images/goodman.png"></image>
+    <image src="/images/symbol/blueboy.png"></image>
     <text>好人玩法</text>
   </view>
   <view class="index-bottom-item" bindtap="comingsoon">
-    <image src="./images/wolfman.png"></image>
+    <image src="/images/symbol/redboy.png"></image>
     <text>狼人玩法</text>
   </view>
 </view>
