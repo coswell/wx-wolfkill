@@ -161,7 +161,6 @@ Page({
     this.setData({
       actuallyuser: option.user,
     })
-    console.log(this.data)
   },
   comingsoon: function () {
     wx.showToast({
