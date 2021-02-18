@@ -5,7 +5,6 @@ const app = getApp()
 Page({
   data: {
     game: {
-      status: 'open',
       gods: {g_seer: true, g_witch: true, g_hunter: true, g_savior: true, g_idiot: false, 
         g_knight: false, g_silence: false, g_tombKeeper:false, total: 4},
       wolves: {w_whiteking: false, w_blackking: false, w_gargoyle: false, w_wolfbeauty: false, w_werewolf: 4, total: 4},
