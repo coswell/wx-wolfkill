@@ -7,10 +7,10 @@ Page({
     game: {
       status: 'open',
       gods: {g_seer: true, g_witch: true, g_hunter: true, g_savior: true, g_idiot: false, 
-        g_knight: false, g_silence: false, total: 4},
-      wolves: {w_whiteking: false, w_blackking: false , w_werewolf: 4, total: 4},
-      villagers: {v_villager: 4, total: 4},
-      third:{t_thief: false, t_bomberman: false, total: 0},
+        g_knight: false, g_silence: false, g_tombKeeper:false, total: 4},
+      wolves: {w_whiteking: false, w_blackking: false, w_gargoyle: false, w_wolfbeauty: false, w_werewolf: 4, total: 4},
+      villagers: {v_rogue: false, v_villager: 4, total: 4},
+      third:{t_thief: false, t_bomberman: false, t_Cupid: false,total: 0},
       configs: {
         sheriff: {
           selected: 0,
@@ -91,7 +91,6 @@ Page({
   },
   configPressed: function (event) {
     const that = this
-    console.log(that.data.game)
     const config = event.currentTarget.id
     let itemList = that.data.game.configs[config].options
     let updateKey = 'game.configs.' + config + '.selected'
@@ -135,6 +134,13 @@ Page({
     this.setData({
       osheight: wx.getSystemInfoSync().windowHeight,
       oswidth: wx.getSystemInfoSync().windowWidth
+    })
+  },
+  comingsoon: function () {
+    wx.showToast({
+      title: '敬请期待',
+      icon: 'success',
+      duration: 1500
     })
   }
 })

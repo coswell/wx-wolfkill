@@ -11,7 +11,7 @@
   </view>
   <view class="section-items">
     <view bindtap="boolPressed" id="gods.g_idiot" class="section-item {{game.gods.g_idiot ? 'selected' : ''}}">白痴</view>
-    <view bindtap="boolPressed" id="gods.g_idiot" class="section-item {{game.gods.g_idiot ? 'selected' : ''}}">白痴</view>
+    <view bindtap="boolPressed" id="gods.g_tombKeeper" class="section-item {{game.gods.g_tombKeeper ? 'selected' : ''}}">守墓人</view>
   </view>
   </block>
   <block wx:else>
@@ -27,28 +27,40 @@
     <view bindtap="boolPressed" id="gods.g_idiot" class="section-item {{game.gods.g_idiot ? 'selected' : ''}}">白痴</view>
   </view>
   </block>
+  <view class="section-title">村民配置</view>
+  <view class="section-items">
+    <view bindtap="boolPressed" id="villagers.v_rogue" class="section-item {{game.villagers.v_rogue ? 'selected' : ''}}">老流氓</view>
+  </view>
+  <view class="divline"></view>
+  <view class="stepper-container">
+    <text class="stepper-label">普通村民</text>
+    <view class="stepper">
+      <text id="villagers.v_villager" class="{{game.villagers.v_villager > 0 ? 'normal' : 'disable'}}" bindtap="subPressed">-</text>
+      <view class="stepper-value">{{game.villagers.v_villager}}</view>
+      <text id="villagers.v_villager" class="normal" bindtap="addPressed">+</text>
+    </view>
+  </view>
   <view class="section-title">狼人配置</view>
   <view class="section-items">
     <view bindtap="boolPressed" id="wolves.w_whiteking" class="section-item {{game.wolves.w_whiteking ? 'selected' : ''}}">白狼王</view>
     <view bindtap="boolPressed" id="wolves.w_blackking" class="section-item {{game.wolves.w_blackking ? 'selected' : ''}}">狼王</view>
+    <view bindtap="boolPressed" id="wolves.w_gargoyle" class="section-item {{game.wolves.w_gargoyle ? 'selected' : ''}}">石像鬼</view>
+    <view bindtap="boolPressed" id="wolves.w_wolfbeauty" class="section-item {{game.wolves.w_wolfbeauty ? 'selected' : ''}}">狼美人</view>
   </view>
   <view class="divline"></view>
   <view class="stepper-container">
-    <text class="stepper-label">普通狼人数量</text>
+    <text class="stepper-label">普通狼人</text>
     <view class="stepper">
       <text id="wolves.w_werewolf" class="{{game.wolves.w_werewolf > 0 ? 'normal' : 'disable'}}" bindtap="subPressed">-</text>
       <view class="stepper-value">{{game.wolves.w_werewolf}}</view>
       <text id="wolves.w_werewolf" class="normal" bindtap="addPressed">+</text>
     </view>
   </view>
-  <view class="section-title">村民配置</view>
-  <view class="stepper-container">
-    <text class="stepper-label">村民数量</text>
-    <view class="stepper">
-      <text id="villagers.v_villager" class="{{game.villagers.v_villager > 0 ? 'normal' : 'disable'}}" bindtap="subPressed">-</text>
-      <view class="stepper-value">{{game.villagers.v_villager}}</view>
-      <text id="villagers.v_villager" class="normal" bindtap="addPressed">+</text>
-    </view>
+  <view class="section-title">第三方阵营</view>
+  <view class="section-items">
+    <view bindtap="boolPressed" id="third.t_Cupid" class="section-item {{game.third.t_Cupid ? 'selected' : ''}}">丘比特</view>
+    <view bindtap="comingsoon" id="third.t_thief" class="section-item {{game.third.t_thief ? 'selected' : ''}}">盗贼</view>
+    <view bindtap="boolPressed" id="third.t_bomberman" class="section-item {{game.third.t_bomberman ? 'selected' : ''}}">炸弹人</view>
   </view>
   <view class="section-title">特殊规则</view>
   <view class="config">
