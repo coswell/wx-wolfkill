@@ -138,7 +138,8 @@ Page({
               dataType: 'json',
               responseType: 'text',
               success: (result)=>{
-                let errcode = result.data.roomid
+                console.log(result)
+                let errcode = result.data.errcode
                 let roomid = result.data.roomid
                 let creater = result.data.creater
                 if (errcode == 0){
