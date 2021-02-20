@@ -7,7 +7,7 @@
     "pages/listman/listman",
     "pages/rolesdetail/rolesdetail",
     "pages/createroom/createroom",
-    "pages/waitroom/waitroom",
+    "pages/profile/profile",
     "pages/god/god",
     "pages/userdetail/userdetail",
     "pages/test/test"

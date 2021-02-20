@@ -199,8 +199,8 @@ page {
 }
 
 .room-modal-pic image {
-  width: 390rpx;
-  height: 390rpx;
+  width: 274rpx;
+  height: 389rpx;
 }
 
 .room-modal-close {

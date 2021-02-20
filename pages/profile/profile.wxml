@@ -1,0 +1,28 @@
+<!--pages/profile/profile.wxml-->
+<view class="room-modal" hidden="{{isHide}}" bindtap="hideQrcodeModal">
+  <view class="room-modal-content">
+    <view class="room-modal-title">
+      点击任意地方关闭
+    </view>
+    <view class="room-modal-pic">
+      <image src="/images/picture/预言家.jpg"></image>
+    </view>
+  </view>
+</view>
+
+<view class="room-top">
+  <view class="room-top-pic">
+    <view class="room-top-pic-image"><open-data type="userAvatarUrl"></open-data></view>
+  </view>
+  <view class="room-top-info">
+    <view class="room-top-name">{{userInfo.nickName}}</view>
+    <view class="room-top-card">
+      <text>您的身份是 </text>
+      <text class="card" bindtap="showQrcodeModal"> ？</text>
+    </view>
+  </view>
+</view>
+
+<view class="room-mid">
+    
+</view>

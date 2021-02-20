@@ -37,9 +37,9 @@
           "scene": null
         },
         {
-          "name": "等待入座",
-          "pathName": "pages/waitroom/waitroom",
-          "query": "",
+          "name": "个人页面",
+          "pathName": "pages/profile/profile",
+          "query": "user=wangyuefeng&room=20210220_190020",
           "scene": null
         }
       ]

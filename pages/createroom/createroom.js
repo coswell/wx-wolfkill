@@ -138,10 +138,33 @@ Page({
               dataType: 'json',
               responseType: 'text',
               success: (result)=>{
+                let errcode = result.data.roomid
                 let roomid = result.data.roomid
-                wx.redirectTo({
-                  url: '/pages/waitroom/waitroom?roomid=' + roomid,
-                })
+                let creater = result.data.creater
+                if (errcode == 0){
+                  wx.redirectTo({
+                    url: '/pages/profile/profile?room=' + roomid + '&user=' + that.data.actuallyuser,
+                  })
+                } else {
+                  wx.showModal({
+                    title: '创建失败',
+                    content: creater + '创建的游戏还未结束，是否加入？',
+                    showCancel: true,
+                    cancelText: '取消',
+                    cancelColor: '#000000',
+                    confirmText: '确定',
+                    confirmColor: '#3CC51F',
+                    success: (result) => {
+                      if(result.confirm){
+                        wx.redirectTo({
+                          url: '/pages/profile/profile?room=' + roomid + '&user=' + that.data.actuallyuser,
+                        })
+                      }
+                    },
+                    fail: ()=>{},
+                    complete: ()=>{}
+                  });
+                }
               },
               fail: ()=>{},
               complete: ()=>{}

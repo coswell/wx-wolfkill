@@ -35,10 +35,12 @@
   <block wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11]}}">
     <view class="room-bottom-item">
       <view class="room-bottom-pic">
-        <image src="{{userInfo.avatarUrl}}"></image>
+        <!-- <image src="{{userInfo.avatarUrl}}"></image> -->
+        <open-data type="userAvatarUrl"></open-data>
       </view>
       <view class="room-bottom-name">
-        <text class="name">{{userInfo.nickName}}</text>
+        <!-- <text class="name">{{userInfo.nickName}}</text> -->
+        <open-data type="userNickName"></open-data>
       </view>
       <view class="room-bottom-card">
         <text class="card">平民</text>
@@ -52,7 +54,7 @@
       扫码进入房间
     </view>
     <view class="room-modal-pic">
-      <image src="./images/qrcode-demo.png"></image>
+      <image src="/images/picture/预言家.jpg"></image>
     </view>
   </view>
   <view class="room-modal-close" bindtap="hideQrcodeModal">
