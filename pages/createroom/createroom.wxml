@@ -56,7 +56,7 @@
       <text id="wolves.w_werewolf" class="normal" bindtap="addPressed">+</text>
     </view>
   </view>
-  <view class="section-title">第三方阵营</view>
+  <view class="section-title">特殊阵营</view>
   <view class="section-items">
     <view bindtap="boolPressed" id="third.t_Cupid" class="section-item {{game.third.t_Cupid ? 'selected' : ''}}">丘比特</view>
     <view bindtap="comingsoon" id="third.t_thief" class="section-item {{game.third.t_thief ? 'selected' : ''}}">盗贼</view>

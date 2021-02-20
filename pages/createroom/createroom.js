@@ -115,10 +115,16 @@ Page({
         icon: 'none',
         duration: 2000
       })
+    } else if (totalUserCount > 18){
+      wx.showToast({
+        title: '当前暂不支持18人以上的对局，不能开始游戏',
+        icon: 'none',
+        duration: 2000
+      })
     } else {
       wx.showModal({
         title: '确认开始游戏',
-        content: `当前游戏总人数为 ${totalUserCount} 人\r\n包含${godscount}神、${villagerscount}民、${wolvescount}狼和${thirdcount}名第三方`,
+        content: `当前游戏总人数为 ${totalUserCount} 人\r\n包含${godscount}神、${villagerscount}民、${wolvescount}狼和${thirdcount}名特殊阵营`,
         success(res) {
           if (res.confirm) {
             that.setData({
