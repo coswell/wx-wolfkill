@@ -24,7 +24,7 @@
     <view bindtap="boolPressed" id="gods.g_idiot" class="section-item {{game.gods.g_idiot ? 'selected' : ''}}">白痴</view>
   </view>
   <view class="section-items">
-    <view bindtap="boolPressed" id="gods.g_idiot" class="section-item {{game.gods.g_idiot ? 'selected' : ''}}">白痴</view>
+    <view bindtap="boolPressed" id="gods.g_tombKeeper" class="section-item {{game.gods.g_tombKeeper ? 'selected' : ''}}">守墓人</view>
   </view>
   </block>
   <view class="section-title">村民配置</view>
