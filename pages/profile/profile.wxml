@@ -1,28 +1,70 @@
 <!--pages/profile/profile.wxml-->
-<view class="room-modal" hidden="{{isHide}}" bindtap="hideQrcodeModal">
+<view class="room-modal" hidden="{{isHide}}" bindtap="hideCard">
   <view class="room-modal-content">
     <view class="room-modal-title">
       点击任意地方关闭
     </view>
     <view class="room-modal-pic">
-      <image src="/images/picture/预言家.jpg"></image>
+        <block wx:if="{{roominfo.selfcard}}">
+            <image src="{{ '/images/picture/' + roominfo.selfcard}}"></image>
+        </block>
+        <block wx:else>
+            <image src="/images/symbol/close.png"></image>
+        </block>
     </view>
   </view>
 </view>
 
 <view class="room-top">
   <view class="room-top-pic">
-    <view class="room-top-pic-image"><open-data type="userAvatarUrl"></open-data></view>
+    <view class="room-top-pic-image">
+        <open-data type="userAvatarUrl"></open-data>
+    </view>
   </view>
   <view class="room-top-info">
-    <view class="room-top-name">{{userInfo.nickName}}</view>
+    <view class="room-top-name">
+        <text>{{roominfo.selfname}}</text>
+    </view>
     <view class="room-top-card">
       <text>您的身份是 </text>
-      <text class="card" bindtap="showQrcodeModal"> ？</text>
+      <text class="card" bindtap="showCard"> ？</text>
     </view>
+  </view>
+  <view class="room-bottom-card">
+        <text class="card" bindtap="setTimer">刷新状态</text>
+  </view>
+  <view class="room-bottom-card">
+        <text class="card" bindtap="clearTimer">停止刷新</text>
   </view>
 </view>
 
 <view class="room-mid">
-    
+    <text bindtap="comingsoon">使用道具</text>
+</view>
+
+<view class="room-mid">
+    <view class="room-mid-title">
+        座位
+    </view>
+    <view class="room-bottom">
+        <block wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]}}" wx:key="key"  wx:for-item="value">
+            <view class="room-bottom-item">
+            <view class="room-bottom-pic">
+                <!-- <open-data type="userAvatarUrl"></open-data> -->
+                <image src="/images/icon/平民.png" />
+            </view>
+            <view class="room-bottom-name">
+                <block wx:if='{{roominfo.seats["player"+value]}}'>
+                    <text class="name">{{roominfo.seats["player"+value]}}</text>
+                </block>
+                <block wx:else>
+                    <text class="name">入座</text>
+                </block>
+            </view>
+            <view class="room-bottom-card">
+                <text class="card">{{value}}</text>
+            </view>
+            </view>
+        </block>
+    </view>
 </view>

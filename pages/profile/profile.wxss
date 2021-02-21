@@ -122,22 +122,22 @@ page {
   }
   
   .room-bottom-item {
-    width: 90rpx;
-    height: 173rpx;
+    width: 120rpx;
+    height: 190rpx;
     margin: 0rpx 16rpx 30rpx;
     border-radius: 0rpx;
     box-sizing: border-box;
   }
   
   .room-bottom-pic {
-    width: 90rpx;
-    height: 90rpx;
+    width: 120rpx;
+    height: 120rpx;
     margin: 0 auto;
   }
   
   .room-bottom-pic image {
-    width: 90rpx;
-    height: 90rpx;
+    width: 120rpx;
+    height: 120rpx;
   }
   
   .room-bottom-name {
@@ -147,10 +147,10 @@ page {
   
   .room-bottom-name .name {
     color: #333;
-    font-size: 23rpx;
+    font-size: 30rpx;
     display: block;
     text-align: center;
-    margin-top: 15rpx;
+    margin-top: 10rpx;
     margin-bottom: 10rpx;
     text-overflow: ellipsis;
     white-space: nowrap;
