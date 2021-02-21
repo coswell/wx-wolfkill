@@ -144,7 +144,7 @@ Page({
                 let creater = result.data.creater
                 if (errcode == 0){
                   wx.redirectTo({
-                    url: '/pages/profile/profile?room=' + roomid + '&user=' + that.data.actuallyuser,
+                    url: '/pages/godpage/godpage?room=' + roomid + '&user=' + that.data.actuallyuser,
                   })
                 } else {
                   wx.showModal({

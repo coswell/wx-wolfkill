@@ -41,6 +41,12 @@
           "pathName": "pages/profile/profile",
           "query": "user=wangyuefeng&room=20210220_190020",
           "scene": null
+        },
+        {
+          "name": "上帝页面（发牌）",
+          "pathName": "pages/godpage/godpage",
+          "query": "user=wangyuefeng&room=20210220_190020",
+          "scene": null
         }
       ]
     }

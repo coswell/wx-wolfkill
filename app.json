@@ -8,7 +8,7 @@
     "pages/rolesdetail/rolesdetail",
     "pages/createroom/createroom",
     "pages/profile/profile",
-    "pages/god/god",
+    "pages/godpage/godpage",
     "pages/userdetail/userdetail",
     "pages/test/test"
   ],

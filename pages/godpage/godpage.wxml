@@ -1,19 +1,4 @@
-<!--pages/profile/profile.wxml-->
-<view class="room-modal" hidden="{{isHide}}" bindtap="hideCard">
-  <view class="room-modal-content">
-    <view class="room-modal-title">
-      点击任意地方关闭
-    </view>
-    <view class="room-modal-pic">
-        <block wx:if="{{roominfo.selfcard}}">
-            <image src="{{ '/images/picture/' + roominfo.selfcard}}"></image>
-        </block>
-        <block wx:else>
-            <image src="/images/symbol/close.png"></image>
-        </block>
-    </view>
-  </view>
-</view>
+<!--pages/godpage/godpage.wxml-->
 
 <view class="room-top">
   <view class="room-top-pic">
@@ -26,8 +11,7 @@
         <text>{{roominfo.selfname}}</text>
     </view>
     <view class="room-top-card">
-      <text>您的身份是 </text>
-      <text class="card" bindtap="showCard"> ？</text>
+      <text>您是本局游戏的法官</text>
     </view>
   </view>
   <view class="room-bottom-card">
@@ -39,7 +23,12 @@
 </view>
 
 <view class="room-mid">
-    <text bindtap="comingsoon">使用道具</text>
+    <block wx:if="{{roominfo.status==0}}">
+        <text class="" bindtap="comingsoon">发牌</text>
+    </block>
+    <block wx:else>
+        <text class="" bindtap="comingsoon">结算游戏</text>
+    </block>
 </view>
 
 <view class="room-mid">
@@ -51,14 +40,19 @@
             <view class="room-bottom-item">
             <view class="room-bottom-pic">
                 <!-- <open-data type="userAvatarUrl"></open-data> -->
-                <image src="/images/icon/平民.png" />
+                <block wx:if="{{ roominfo.seats['role'+value] }}">
+                    <image src="{{'/images/picture/' + roominfo.seats['role'+value] + '.jpg'}}" />
+                </block>
+                <block wx:else>
+                    <image class="icon" src="/images/icon/平民.png" />
+                </block>
             </view>
             <view class="room-bottom-name">
                 <block wx:if='{{roominfo.seats["player"+value]}}'>
                     <text class="name">{{roominfo.seats["player"+value]}}</text>
                 </block>
                 <block wx:else>
-                    <text class="name">↑点击入座</text>
+                    <text class="name">入座</text>
                 </block>
             </view>
             <view class="room-bottom-card">
