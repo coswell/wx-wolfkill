@@ -8,6 +8,7 @@
     "pages/createroom/createroom",
     "pages/profile/profile",
     "pages/godpage/godpage",
+    "pages/prop/prop",
     "pages/userdetail/userdetail"
   ],
   "window": {
