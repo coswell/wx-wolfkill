@@ -13,12 +13,6 @@
     "miniprogram": {
       "list": [
         {
-          "name": "登录demo",
-          "pathName": "pages/test/test",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "排行榜",
           "pathName": "pages/rankinglist/rankinglist",
           "query": "",

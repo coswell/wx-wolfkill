@@ -1,7 +1,7 @@
 //app.js
 App({
   globalData:{
-    URL: 'http://192.168.31.46:8000/',
+    URL: 'http://127.0.0.1:8000/',
     userInfo:null
   },
   onLaunch: function () {

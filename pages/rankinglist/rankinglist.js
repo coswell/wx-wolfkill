@@ -38,6 +38,9 @@ Page({
    */
   onShow: function () {
     console.log(app.globalData.URL)
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: app.globalData.URL + 'getrank',
       data: {},
@@ -49,6 +52,7 @@ Page({
         this.setData({
           ranklist : result.data.sort(this.compare("id"))
         })
+        wx.hideLoading()
       },
       fail: ()=>{},
       complete: ()=>{}

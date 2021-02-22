@@ -50,6 +50,7 @@ Page({
         that.setData({
           roominfo: result.data
         })
+        wx.hideLoading()
       },
       fail: ()=>{},
       complete: ()=>{}
@@ -71,6 +72,9 @@ Page({
       room: options.room,
       osheight: wx.getSystemInfoSync().windowHeight,
       oswidth: wx.getSystemInfoSync().windowWidth
+    })
+    wx.showLoading({
+      title: '加载中',
     })
     this.getRoomInfo()
   },

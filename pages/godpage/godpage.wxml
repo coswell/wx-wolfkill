@@ -41,7 +41,7 @@
             <view class="room-bottom-pic">
                 <!-- <open-data type="userAvatarUrl"></open-data> -->
                 <block wx:if="{{ roominfo.seats['role'+value] }}">
-                    <image src="{{'/images/picture/' + roominfo.seats['role'+value] + '.jpg'}}" />
+                    <image id="{{'player' + value}}" src="{{'/images/picture/' + roominfo.seats['role'+value] + '.jpg'}}" />
                 </block>
                 <block wx:else>
                     <image class="icon" src="/images/icon/平民.png" />

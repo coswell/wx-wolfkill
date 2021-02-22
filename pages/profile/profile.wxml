@@ -36,11 +36,30 @@
   <view class="room-bottom-card">
         <text class="card" bindtap="clearTimer">停止刷新</text>
   </view>
+  <view class="room-bottom-card">
+        <text class="card" bindtap="comingsoon">游戏日志</text>
+  </view>
 </view>
 
-<view class="room-mid">
+<!-- <view class="room-mid">
     <text bindtap="comingsoon">使用道具</text>
+</view> -->
+<view class="room-prop">
+    <view class="btns">
+
+        <block wx:if="{{roominfo.playernumber}}">
+            <text class="left">已入座：{{roominfo.playernumber}}号</text>
+            <button class="left" bindtap="sitUp">离座</button>
+        </block>
+        <block wx:else>
+            <text class="left" >请入座~</text>
+        </block>
+        
+        <button class="right" bindtap="comingsoon">使用道具</button>
+        
+    </view>
 </view>
+
 
 <view class="room-mid">
     <view class="room-mid-title">
@@ -51,7 +70,7 @@
             <view class="room-bottom-item">
             <view class="room-bottom-pic">
                 <!-- <open-data type="userAvatarUrl"></open-data> -->
-                <image src="/images/icon/平民.png" />
+                <image id="{{'player' + value}}" src="/images/icon/平民.png"  bindtap="sitDown"/>
             </view>
             <view class="room-bottom-name">
                 <block wx:if='{{roominfo.seats["player"+value]}}'>

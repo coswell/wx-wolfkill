@@ -81,6 +81,39 @@ page {
     float: left;
   }
   
+  /* 个人页面功能按钮 */
+  .room-prop {
+    background: #fff;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 30rpx;
+    margin-top: 30rpx;
+  }
+
+  .room-prop .btns {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .room-prop .left{
+    display: flex;
+    align-items: center;
+    font-size: 34rpx;
+    margin-left: 5rpx;
+    width: auto;
+  }
+
+  .room-prop .right{
+    display: flex;
+    align-items: center;
+    font-size: 34rpx;
+    margin-right: 5rpx;
+    width: auto;
+  }
+
   /*个人页面中间说明*/
   
   .room-mid {
@@ -91,7 +124,7 @@ page {
     padding: 30rpx;
     margin-top: 30rpx;
   }
-  
+
   .room-mid-title {
     text-align: center;
     font-size: 34rpx;
@@ -147,7 +180,7 @@ page {
   
   .room-bottom-name .name {
     color: #333;
-    font-size: 28rpx;
+    font-size: 26rpx;
     display: block;
     text-align: center;
     margin-top: 10rpx;

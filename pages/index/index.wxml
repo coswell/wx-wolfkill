@@ -7,14 +7,14 @@
 
 <view class="button-content">
     <button type="primary" size="default" bindtap="createRoom">创建房间</button>
-    <button bindtap="comingsoon">加入房间</button>
+    <button bindtap="joinRoom">加入房间</button>
 </view>
 <view class="index-bottom">
   <navigator class="index-bottom-item" url="../rankinglist/rankinglist" open-type="navigate" hover-class="index-bottom-item-hover">
     <image src="/images/symbol/books.png"></image>
     <text>积分排行</text>
   </navigator>
-  <navigator class="index-bottom-item" url="../listman/listman" open-type="navigate" hover-class="index-bottom-item-hover">
+  <navigator class="index-bottom-item" url="../roleslist/roleslist" open-type="navigate" hover-class="index-bottom-item-hover">
     <image src="/images/symbol/orangeboy.png"></image>
     <text>人物介绍</text>
   </navigator>

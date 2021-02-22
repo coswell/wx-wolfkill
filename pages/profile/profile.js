@@ -50,17 +50,103 @@ Page({
         that.setData({
           roominfo: result.data
         })
+        wx.hideLoading()
       },
       fail: ()=>{},
       complete: ()=>{}
     });
   },
+  // 敬请期待
   comingsoon: function () {
     wx.showToast({
       title: '敬请期待',
       icon: 'success',
       duration: 1500
     })
+  },
+  //入座
+  sitDown: function (event) {
+    const that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.URL + 'seatact',
+      data: { //user,room,pre,to,type
+        "user":that.data.actuallyuser,
+        "room": that.data.room,
+        "pre": that.data.roominfo.playernumber,
+        "to": event.currentTarget.id,
+        "type": 0,
+      },
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        console.log("xxx",result.data)
+        that.getRoomInfo()
+        if (result.data.errcode==0){
+          wx.showToast({
+            title: '成功入座',
+            icon: 'success',
+            duration: 1500
+          })
+        } else {
+          wx.showToast({
+            title: result.data.msg,
+            icon: 'none',
+            duration: 1500
+          })
+        }
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
+  //离座
+  sitUp: function () {
+    const that = this
+    wx.showModal({
+      title: '确定离开座位吗？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if(result.confirm){
+          wx.showLoading({
+            title: '加载中',
+          })
+          wx.request({
+            url: app.globalData.URL + 'seatact',
+            data: { //user,room,pre,to,type
+              "user":that.data.actuallyuser,
+              "room": that.data.room,
+              "pre": that.data.roominfo.playernumber,
+              "type": 1,
+            },
+            header: {'content-type':'application/json'},
+            method: 'GET',
+            dataType: 'json',
+            responseType: 'text',
+            success: (result)=>{
+              that.getRoomInfo()
+              wx.showToast({
+                title: '已离座',
+                icon: 'success',
+                duration: 1500
+              })
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
+        }
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -71,6 +157,9 @@ Page({
       room: options.room,
       osheight: wx.getSystemInfoSync().windowHeight,
       oswidth: wx.getSystemInfoSync().windowWidth
+    })
+    wx.showLoading({
+      title: '加载中',
     })
     this.getRoomInfo()
   },
