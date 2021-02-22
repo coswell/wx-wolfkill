@@ -69,6 +69,7 @@ Page({
     const that = this
     wx.showLoading({
       title: '加载中',
+      mask: true
     })
     wx.request({
       url: app.globalData.URL + 'seatact',
@@ -118,6 +119,7 @@ Page({
         if(result.confirm){
           wx.showLoading({
             title: '加载中',
+            mask: true
           })
           wx.request({
             url: app.globalData.URL + 'seatact',
@@ -148,6 +150,13 @@ Page({
       complete: ()=>{}
     });
   },
+  // 跳转到道具页
+  useprop: function () {
+    const that = this
+    wx.navigateTo({
+      url: '../prop/prop?user=' + that.data.actuallyuser + '&room=' + that.data.room,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -160,6 +169,7 @@ Page({
     })
     wx.showLoading({
       title: '加载中',
+      mask: true
     })
     this.getRoomInfo()
   },
@@ -175,7 +185,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // this.setTimer()
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    this.getRoomInfo()
   },
 
   /**
