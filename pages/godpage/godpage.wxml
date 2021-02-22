@@ -24,7 +24,7 @@
 
 <view class="room-mid">
     <block wx:if="{{roominfo.status==0}}">
-        <text class="" bindtap="comingsoon">发牌</text>
+        <text class="" bindtap="divCard">发牌</text>
     </block>
     <block wx:else>
         <text class="" bindtap="comingsoon">结算游戏</text>

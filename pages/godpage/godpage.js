@@ -56,6 +56,33 @@ Page({
       complete: ()=>{}
     });
   },
+  //发牌
+  divCard: function () {
+    let that = this
+    let user = that.data.actuallyuser
+    let room = that.data.room
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    wx.request({
+      url: app.globalData.URL + 'divcard',
+      data: {
+        "user": user,
+        "room": room,
+      },
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        console.log(result.data)
+        that.getRoomInfo()
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   comingsoon: function () {
     wx.showToast({
       title: '敬请期待',
