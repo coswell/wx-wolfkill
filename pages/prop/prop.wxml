@@ -1,2 +1,81 @@
 <!--pages/prop/prop.wxml-->
-<text>pages/prop/prop.wxml</text>
+<!-- 规则提示 -->
+<view class="room-modal" hidden="{{isHide}}">
+  <view class="room-modal-content">
+    <view class="room-modal-title">
+      角色预选详细规则1.0
+    </view>
+    <view class="room-modal-text">
+        <view>　1.目前预选角色后，只能更换，不能取消，请慎重使用；</view>
+        <view>　2.预选时允许多人选择同一角色；</view>
+        <view>　　2-1.多人同时预选了同一角色时，优先将该角色分配给排位积分最低的玩家；</view>
+        <view>　　2-2.因为上述情况预选未生效时，游戏结束时会退还全部积分；</view>
+    </view>
+  </view>
+  <view class="room-modal-close" bindtap="hideRule">
+    <image src="/images/symbol/close.png"></image>
+  </view>
+</view>
+
+<view class="room-top">
+  <view class="room-top-pic">
+    <view class="room-top-pic-image">
+        <open-data type="userAvatarUrl"></open-data>
+    </view>
+  </view>
+  <view class="room-top-info">
+    <view class="room-top-name">
+        <text>{{roominfo.selfname}}</text>
+    </view>
+    <view class="room-top-card">
+      <text>当前可用消费积分：</text>
+      <text class="card">{{roominfo.selfpoint}}</text>
+    </view>
+  </view>
+  <text>\r\n</text>
+  <view class="room-bottom-card">
+        <text class="card" bindtap="showRule">查看规则</text>
+  </view>
+</view>
+
+<view class="room-mid">
+    <view class="room-mid-title">
+        本局游戏可选角色
+    </view>
+    <view class="room-bottom">
+        <view class="room-bottom-item">
+            <view class="room-bottom-pic">
+                <image id="not_villagers" data-point="5" src="/images/picture/非民.jpg" bindtap="preSelected"/>
+            </view>
+            <view class="room-bottom-card">
+                <text class="card">非民</text>
+            </view>
+        </view>
+        <view class="room-bottom-item">
+            <view class="room-bottom-pic">
+                <image id="not_god" data-point="3" src="/images/picture/非神.jpg" bindtap="preSelected"/>
+            </view>
+            <view class="room-bottom-card">
+                <text class="card">非神</text>
+            </view>
+        </view>
+        <view class="room-bottom-item">
+            <view class="room-bottom-pic">
+                <image id="not_wolf" data-point="7" src="/images/picture/非狼.jpg" bindtap="preSelected"/>
+            </view>
+            <view class="room-bottom-card">
+                <text class="card">非狼</text>
+            </view>
+        </view>
+        <block wx:for="{{roominfo.roleslist}}" wx:key="roles" wx:for-index="key" wx:for-item="value">
+            <view class="room-bottom-item">
+                <view class="room-bottom-pic">
+                    <image id="{{key}}" data-point="12" src="/images/picture/{{value}}.jpg" bindtap="preSelected"/>
+                </view>
+                <view class="room-bottom-card">
+                    <text class="card">{{value}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

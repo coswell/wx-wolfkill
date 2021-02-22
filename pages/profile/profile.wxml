@@ -55,7 +55,7 @@
             <text class="left" >请入座~</text>
         </block>
         
-        <button class="right" bindtap="comingsoon">使用道具</button>
+        <button class="right" bindtap="useprop">使用道具</button>
         
     </view>
 </view>
