@@ -52,7 +52,7 @@
                     <text class="name">{{roominfo.seats["player"+value]}}</text>
                 </block>
                 <block wx:else>
-                    <text class="name">入座</text>
+                    <text class="name">空置座位</text>
                 </block>
             </view>
             <view class="room-bottom-card">
