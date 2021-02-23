@@ -10,6 +10,7 @@
         <view>　2.预选时允许多人选择同一角色；</view>
         <view>　　2-1.多人同时预选了同一角色时，将随机分配给预选玩家；</view>
         <view>　　2-2.因为上述情况预选未生效时，游戏结束时会退还全部积分；</view>
+        <view>　3.其它情况导致预选未生效时，游戏结束时也会退还全部积分；</view>
     </view>
   </view>
   <view class="room-modal-close" bindtap="hideRule">
