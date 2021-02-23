@@ -45,7 +45,7 @@ Page({
         if (errcode != 0){
           wx.showModal({
             title: '加入失败',
-            content: creater + '暂无可加入的游戏，是否创建？',
+            content: '暂无可加入的游戏，是否创建？',
             showCancel: true,
             cancelText: '取消',
             cancelColor: '#000000',
@@ -62,15 +62,30 @@ Page({
             complete: ()=>{}
           });
         } else {
-          if (that.data.actuallyuser == judge){
-            wx.redirectTo({
-              url: '/pages/godpage/godpage?user=' + that.data.actuallyuser + '&room=' + roomid,
-            })
-          } else {
-            wx.redirectTo({
-              url: '/pages/profile/profile?user=' + that.data.actuallyuser + '&room=' + roomid,
-            })
-          }
+          wx.showModal({
+            title: '寻找成功',
+            content: '找到' + judge + '创建的游戏，是否加入？',
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if(result.confirm){
+                if (that.data.actuallyuser == judge){
+                  wx.redirectTo({
+                    url: '/pages/godpage/godpage?user=' + that.data.actuallyuser + '&room=' + roomid,
+                  })
+                } else {
+                  wx.redirectTo({
+                    url: '/pages/profile/profile?user=' + that.data.actuallyuser + '&room=' + roomid,
+                  })
+                }
+              }
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
         }
       },
       fail: ()=>{},

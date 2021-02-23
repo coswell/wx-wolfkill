@@ -45,7 +45,7 @@
     <view class="room-bottom">
         <view class="room-bottom-item">
             <view class="room-bottom-pic">
-                <image id="not_villagers" data-point="5" src="/images/picture/非民.jpg" bindtap="preSelected"/>
+                <image id="not_villagers" data-point="5" src="/images/picture/notvillagers.jpg" bindtap="preSelected"/>
             </view>
             <view class="room-bottom-card">
                 <text class="card">非民</text>
@@ -53,7 +53,7 @@
         </view>
         <view class="room-bottom-item">
             <view class="room-bottom-pic">
-                <image id="not_god" data-point="3" src="/images/picture/非神.jpg" bindtap="preSelected"/>
+                <image id="not_god" data-point="3" src="/images/picture/notgod.jpg" bindtap="preSelected"/>
             </view>
             <view class="room-bottom-card">
                 <text class="card">非神</text>
@@ -61,7 +61,7 @@
         </view>
         <view class="room-bottom-item">
             <view class="room-bottom-pic">
-                <image id="not_wolf" data-point="7" src="/images/picture/非狼.jpg" bindtap="preSelected"/>
+                <image id="not_wolf" data-point="7" src="/images/picture/notwolf.jpg" bindtap="preSelected"/>
             </view>
             <view class="room-bottom-card">
                 <text class="card">非狼</text>

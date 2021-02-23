@@ -44,7 +44,7 @@
                     <image id="{{'player' + value}}" src="{{'/images/picture/' + roominfo.seats['role'+value] + '.jpg'}}" />
                 </block>
                 <block wx:else>
-                    <image class="icon" src="/images/icon/平民.png" />
+                    <image class="icon" src="/images/icon/Villager.png" />
                 </block>
             </view>
             <view class="room-bottom-name">

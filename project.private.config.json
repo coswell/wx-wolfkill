@@ -33,19 +33,19 @@
         {
           "name": "个人页面",
           "pathName": "pages/profile/profile",
-          "query": "user=wangyuefeng&room=20210220_190020",
+          "query": "user=wangyuefeng&room=20210223_100610",
           "scene": null
         },
         {
           "name": "上帝页面（发牌）",
           "pathName": "pages/godpage/godpage",
-          "query": "user=wangyuefeng&room=20210220_190020",
+          "query": "user=wangyuefeng&room=20210223_100610",
           "scene": null
         },
         {
           "name": "道具",
           "pathName": "pages/prop/prop",
-          "query": "user=wangyuefeng&room=20210220_190020",
+          "query": "user=wangyuefeng&room=20210223_100610",
           "scene": null
         }
       ]

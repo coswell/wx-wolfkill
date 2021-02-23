@@ -70,7 +70,7 @@
             <view class="room-bottom-item">
             <view class="room-bottom-pic">
                 <!-- <open-data type="userAvatarUrl"></open-data> -->
-                <image id="{{'player' + value}}" src="/images/icon/平民.png"  bindtap="sitDown"/>
+                <image id="{{'player' + value}}" src="/images/icon/Villager.png"  bindtap="sitDown"/>
             </view>
             <view class="room-bottom-name">
                 <block wx:if='{{roominfo.seats["player"+value]}}'>
