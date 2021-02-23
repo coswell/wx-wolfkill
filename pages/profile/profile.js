@@ -25,7 +25,7 @@ Page({
     let self = this;
     self.timer = setInterval(() => {
       self.getRoomInfo();
-    }, 5000);
+    }, 1000);
   },
   //清除定时器
   clearTimer() {
