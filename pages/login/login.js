@@ -113,7 +113,7 @@ Page({
         responseType: 'text',
         success: (result)=>{
           if (result.statusCode == 200){
-            wx.navigateTo({
+            wx.redirectTo({
               url: '../index/index?user=' + this.data.username
             })
           } else {

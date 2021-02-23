@@ -53,7 +53,7 @@ Page({
             confirmColor: '#3CC51F',
             success: (result) => {
               if(result.confirm){
-                wx.redirectTo({
+                wx.navigateTo({
                   url: '/pages/createroom/createroom?user=' + that.data.actuallyuser,
                 })
               }
@@ -73,11 +73,11 @@ Page({
             success: (result) => {
               if(result.confirm){
                 if (that.data.actuallyuser == judge){
-                  wx.redirectTo({
+                  wx.navigateTo({
                     url: '/pages/godpage/godpage?user=' + that.data.actuallyuser + '&room=' + roomid,
                   })
                 } else {
-                  wx.redirectTo({
+                  wx.navigateTo({
                     url: '/pages/profile/profile?user=' + that.data.actuallyuser + '&room=' + roomid,
                   })
                 }
