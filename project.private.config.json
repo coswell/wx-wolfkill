@@ -47,6 +47,12 @@
           "pathName": "pages/prop/prop",
           "query": "user=wangyuefeng&room=20210223_100610",
           "scene": null
+        },
+        {
+          "name": "结算游戏",
+          "pathName": "pages/closeroom/closeroom",
+          "query": "user=wangyuefeng&room=20210223_113635",
+          "scene": null
         }
       ]
     }

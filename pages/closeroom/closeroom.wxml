@@ -1,0 +1,25 @@
+<!--pages/closeroom/closeroom.wxml-->
+<view >胜利阵营</view>
+<view >
+    <radio-group bindchange="groupChange">
+    <label class="radio">
+        <radio value="human" checked="{{true}}"/>好人
+        <radio value="werewolf" />狼人
+        <radio value="thethird" />第三方
+    </label>
+    </radio-group>
+</view>
+<view class="divline"></view>
+<view >获胜玩家</view>
+<view>
+    <checkbox-group bindchange="winnerChange">
+    <label class="checkbox" wx:for="{{playerlist}}">
+        <checkbox value="{{playerlist[index]}}" checked="{{false}}"/>{{playerlist[index]}}
+    </label>
+    </checkbox-group>
+</view>
+<view class="divline"></view>
+<view>
+    <button type="primary" data-optype="0" bindtap="comingsoon">提交并结算积分</button>
+    <button data-optype="1" bindtap="endGame">手工计分</button>
+</view>
