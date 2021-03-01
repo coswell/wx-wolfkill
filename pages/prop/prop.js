@@ -73,8 +73,9 @@ Page({
             dataType: 'json',
             responseType: 'text',
             success: (result)=>{
+              console.log(result)
               wx.hideLoading();
-              if (result.errcode == 0){
+              if (result.data.errcode == 0){
                 wx.showToast({
                   title: '预选成功',
                   duration: 1500,
