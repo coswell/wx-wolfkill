@@ -46,7 +46,7 @@ Page({
     let point = event.currentTarget.dataset.point
     wx.showModal({
       title: '消费提醒',
-      content: '该角色需要' + point + '分，确认消费？（积分退还规则）',
+      content: '该角色需要' + point + '分，确认消费？',
       showCancel: true,
       cancelText: '取消',
       cancelColor: '#000000',

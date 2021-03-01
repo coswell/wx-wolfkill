@@ -104,6 +104,10 @@ Page({
         duration: 2000
       })
     } else {
+      wx.showLoading({
+        title: '登陆中',
+        mask: true
+      })
       wx.request({
         url: app.globalData.URL + 'login?user=' + this.data.username,
         data: {},
@@ -112,6 +116,7 @@ Page({
         dataType: 'json',
         responseType: 'text',
         success: (result)=>{
+          wx.hideLoading()
           if (result.statusCode == 200){
             wx.redirectTo({
               url: '../index/index?user=' + this.data.username
@@ -124,7 +129,9 @@ Page({
             })
           }
         },
-        fail: ()=>{},
+        fail: ()=>{
+          wx.hideLoading()
+        },
         complete: ()=>{}
       });
       
