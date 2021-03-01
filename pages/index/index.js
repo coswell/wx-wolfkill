@@ -31,6 +31,10 @@ Page({
   //加入一局游戏
   joinRoom:function() {
     const that = this
+    wx.showLoading({
+      title: "寻找中",
+      mask: true,
+    })
     wx.request({
       url: app.globalData.URL + 'findroom',
       data: {},
@@ -39,6 +43,7 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: (result)=>{
+        wx.hideLoading()
         let errcode = result.data.errcode
         let roomid = result.data.roomid
         let judge = result.data.judge
@@ -88,7 +93,9 @@ Page({
           });
         }
       },
-      fail: ()=>{},
+      fail: ()=>{
+        wx.hideLoading()
+      },
       complete: ()=>{}
     });
   },
