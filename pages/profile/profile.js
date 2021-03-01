@@ -23,14 +23,29 @@ Page({
   //定义定时器
   setTimer() {
     let self = this;
-    self.timer = setInterval(() => {
-      self.getRoomInfo();
-    }, 1000);
+    wx.showToast({
+      title: '已开始自动刷新房间信息',
+      icon: 'none',
+      duration: 1500,
+      mask: true
+    });
+    if (self.timer) {
+    } else {
+      self.timer = setInterval(() => {
+        self.getRoomInfo();
+      }, 1000);
+    }
   },
   //清除定时器
   clearTimer() {
     clearInterval(this.timer);//如果发现这个clearInterval不生效，写法又没问题
     this.timer = null;//自己把timer置为null就好了
+    wx.showToast({
+      title: '已停止刷新',
+      icon: 'none',
+      duration: 1500,
+      mask: true
+    });
   },
   //定时器的具体事件
   getRoomInfo() {
@@ -172,6 +187,7 @@ Page({
       mask: true
     })
     this.getRoomInfo()
+    this.setTimer()
   },
 
   /**

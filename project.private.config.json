@@ -33,13 +33,13 @@
         {
           "name": "个人页面",
           "pathName": "pages/profile/profile",
-          "query": "user=wangyuefeng&room=20210223_100610",
+          "query": "user=wuchenyang&room=20210223_113635",
           "scene": null
         },
         {
           "name": "上帝页面（发牌）",
           "pathName": "pages/godpage/godpage",
-          "query": "user=wangyuefeng&room=20210223_100610",
+          "query": "user=wangyuefeng&room=20210223_113635",
           "scene": null
         },
         {

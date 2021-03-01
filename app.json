@@ -9,7 +9,8 @@
     "pages/profile/profile",
     "pages/godpage/godpage",
     "pages/prop/prop",
-    "pages/userdetail/userdetail"
+    "pages/userdetail/userdetail",
+    "pages/closeroom/closeroom"
   ],
   "window": {
     "backgroundTextStyle": "light",

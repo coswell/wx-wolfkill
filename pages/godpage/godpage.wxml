@@ -27,7 +27,7 @@
         <text class="" bindtap="divCard">发牌</text>
     </block>
     <block wx:else>
-        <text class="" bindtap="comingsoon">结算游戏</text>
+        <text class="" bindtap="closeroom">结算游戏</text>
     </block>
 </view>
 
@@ -41,7 +41,8 @@
             <view class="room-bottom-pic">
                 <!-- <open-data type="userAvatarUrl"></open-data> -->
                 <block wx:if="{{ roominfo.seats['role'+value] }}">
-                    <image id="{{'player' + value}}" src="{{'/images/picture/' + roominfo.seats['role'+value] + '.jpg'}}" />
+                    <image id="{{'player' + value}}" data-role-card="{{roominfo.seats['role'+value] + '.jpg'}}" 
+                            src="{{'/images/picture/' + roominfo.seats['role'+value] + '.jpg'}}" bindtap="showRoleCard"/>
                 </block>
                 <block wx:else>
                     <image class="icon" src="/images/icon/Villager.png" />

@@ -9,28 +9,49 @@ Page({
   data: {
     isHide:true
   },
-
-  showCard: function () {
-    this.setData({
-      isHide: false
-    })
+  //展示卡牌
+  showRoleCard: function (event) {
+    let roleCard = event.target.dataset.roleCard
+    let cardURL = 'https://hyl.wang/werewolf/picture/' + roleCard
+    wx.previewImage({
+      current: cardURL,
+      urls: [cardURL,],
+    });
   },
-  hideCard: function () {
-    this.setData({
-      isHide: true
-    })
+  closeroom: function () {
+    let that = this
+    wx.navigateTo({
+      url: '../closeroom/closeroom?user=' + that.data.actuallyuser + '&room=' + that.data.room,
+    });
   },
   //定义定时器
   setTimer() {
     let self = this;
-    self.timer = setInterval(() => {
-      self.getRoomInfo();
-    }, 1000);
+    wx.showToast({
+      title: '已开始自动刷新房间信息',
+      icon: 'none',
+      duration: 1500,
+      mask: true
+    });
+    if (self.timer) {
+    } else {
+      self.timer = setInterval(() => {
+        self.getRoomInfo();
+      }, 1000);
+    }
   },
   //清除定时器
   clearTimer() {
-    clearInterval(this.timer);//如果发现这个clearInterval不生效，写法又没问题
-    this.timer = null;//自己把timer置为null就好了
+    if (this.timer) {
+      wx.showToast({
+        title: '已停止刷新',
+        icon: 'none',
+        duration: 1500,
+        mask: true
+      });
+      clearInterval(this.timer);//如果发现这个clearInterval不生效，写法又没问题
+      this.timer = null;//自己把timer置为null就好了
+    }
   },
   //定时器的具体事件
   getRoomInfo() {
@@ -83,6 +104,7 @@ Page({
       complete: ()=>{}
     });
   },
+  //comingsoon
   comingsoon: function () {
     wx.showToast({
       title: '敬请期待',
@@ -105,6 +127,7 @@ Page({
       mask: true
     })
     this.getRoomInfo()
+    this.setTimer()
   },
 
   /**
@@ -118,7 +141,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // this.setTimer()
+    
   },
 
   /**
