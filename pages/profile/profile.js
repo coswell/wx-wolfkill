@@ -67,7 +67,9 @@ Page({
         })
         wx.hideLoading()
       },
-      fail: ()=>{},
+      fail: ()=>{
+        wx.hideLoading()
+      },
       complete: ()=>{}
     });
   },
@@ -116,7 +118,9 @@ Page({
           })
         }
       },
-      fail: ()=>{},
+      fail: ()=>{
+        wx.hideLoading()
+      },
       complete: ()=>{}
     });
   },
@@ -156,7 +160,9 @@ Page({
                 duration: 1500
               })
             },
-            fail: ()=>{},
+            fail: ()=>{
+              wx.hideLoading()
+            },
             complete: ()=>{}
           });
         }

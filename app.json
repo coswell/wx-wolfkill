@@ -18,5 +18,8 @@
     "navigationBarTitleText": "狼人杀",
     "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "networkTimeout": {
+    "request": 15000
+  }
 }
